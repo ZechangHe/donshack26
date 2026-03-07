@@ -40,7 +40,15 @@
 
 > **Screen:** Left window — About page
 
-**Do:** Scroll down briefly to show the "Real Problems We Solve" section (3–5 seconds, don't linger)
+**Do:** Scroll down to the **"Traditional vs GreenBite"** comparison section
+
+**Say:**
+
+> "Here's what cafeterias look like today — students line up at kiosk machines, get a paper ticket, staff prints another copy, reads it to pack food and sometimes misses items, then yells your number. Two-plus sheets of paper go straight to the trash every single order.
+>
+> Now look at GreenBite — students order from their phone, the kitchen sees it instantly on screen, you get a digital pickup code, track your order in real-time, and pick up with a verified code. Zero paper, zero waste."
+
+**Do:** Scroll down briefly past the "Problems We Solve" section (2–3 seconds, don't linger)
 
 **Say:**
 
@@ -171,7 +179,8 @@
 | Timing | Section | Screen Action |
 |--------|---------|---------------|
 | 0:00 | Problem | Left: About page hero |
-| 0:30 | Student Login | Left: Login page → Menu |
+| 0:30 | Comparison | Left: Scroll to Traditional vs GreenBite |
+| 0:50 | Student Login | Left: Login page → Menu |
 | 1:00 | Student Order | Left: Menu → Cart → Place Order |
 | 1:30 | Order Placed | Left: My Orders (show code) → Point to Right |
 | 2:00 | Kitchen Flow | Right: Pending → Preparing → Ready |
