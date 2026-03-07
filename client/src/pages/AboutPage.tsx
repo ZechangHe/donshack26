@@ -135,6 +135,274 @@ function IconTrayConfusion() {
   );
 }
 
+/* ── FlowStep SVG Icons ── */
+
+function IconBrowseMenu() {
+  return (
+    <svg {...iconProps}>
+      {/* Phone */}
+      <rect x="14" y="4" width="20" height="40" rx="4" />
+      <line x1="14" y1="10" x2="34" y2="10" strokeWidth="1.5" />
+      <line x1="14" y1="36" x2="34" y2="36" strokeWidth="1.5" />
+      {/* Menu lines */}
+      <line x1="18" y1="16" x2="30" y2="16" strokeWidth="2" />
+      <line x1="18" y1="22" x2="30" y2="22" strokeWidth="2" />
+      <line x1="18" y1="28" x2="30" y2="28" strokeWidth="2" />
+      {/* Dots beside lines */}
+      <circle cx="32" cy="16" r="1" fill="#fbbf24" stroke="none" />
+      <circle cx="32" cy="22" r="1" fill="#fbbf24" stroke="none" />
+      <circle cx="32" cy="28" r="1" fill="#fbbf24" stroke="none" />
+    </svg>
+  );
+}
+
+function IconReviewCart() {
+  return (
+    <svg {...iconProps}>
+      {/* Cart */}
+      <path d="M6 10 L12 10 L18 34" />
+      <path d="M12 16 L40 16 L36 30 L18 30" />
+      {/* Wheels */}
+      <circle cx="22" cy="38" r="3" />
+      <circle cx="34" cy="38" r="3" />
+      {/* Food item in cart */}
+      <rect x="18" y="20" width="14" height="6" rx="2" stroke="#fbbf24" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function IconTrackOrder() {
+  return (
+    <svg {...iconProps}>
+      {/* Timeline */}
+      <line x1="8" y1="24" x2="40" y2="24" strokeWidth="2" />
+      {/* Completed steps */}
+      <circle cx="8" cy="24" r="4" fill="#6ee7b7" stroke="#6ee7b7" />
+      <circle cx="19" cy="24" r="4" fill="#6ee7b7" stroke="#6ee7b7" />
+      {/* Current step */}
+      <circle cx="30" cy="24" r="4" />
+      <circle cx="30" cy="24" r="2" fill="#fbbf24" stroke="none" />
+      {/* Future step */}
+      <circle cx="40" cy="24" r="4" />
+      {/* Check marks */}
+      <path d="M6 24 L8 26 L11 21" stroke="#fff" strokeWidth="2" fill="none" />
+      <path d="M17 24 L19 26 L22 21" stroke="#fff" strokeWidth="2" fill="none" />
+    </svg>
+  );
+}
+
+function IconWaitReady() {
+  return (
+    <svg {...iconProps}>
+      {/* Clock */}
+      <circle cx="20" cy="24" r="14" />
+      <path d="M20 14 L20 24 L28 28" strokeWidth="2.5" />
+      {/* Notification bell */}
+      <path d="M36 10 Q36 4 40 4 Q44 4 44 10 L44 18 L36 18 Z" stroke="#fbbf24" strokeWidth="2" />
+      <line x1="36" y1="18" x2="44" y2="18" stroke="#fbbf24" strokeWidth="2" />
+      <circle cx="40" cy="21" r="1.5" fill="#fbbf24" stroke="none" />
+    </svg>
+  );
+}
+
+function IconPickUp() {
+  return (
+    <svg {...iconProps}>
+      {/* Counter surface */}
+      <line x1="4" y1="28" x2="44" y2="28" strokeWidth="3" />
+      {/* Tray on counter */}
+      <path d="M12 28 L12 22 L32 22 L32 28" strokeWidth="2" />
+      <rect x="10" y="18" width="24" height="4" rx="2" />
+      {/* Hand reaching */}
+      <path d="M36 14 Q40 10 42 14 L42 22 L36 22" stroke="#fbbf24" strokeWidth="2.5" />
+      <line x1="42" y1="14" x2="44" y2="12" stroke="#fbbf24" strokeWidth="2" />
+      {/* Food on tray */}
+      <circle cx="22" cy="16" r="3" stroke="#fbbf24" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconDoneZeroPaper() {
+  return (
+    <svg {...iconProps}>
+      {/* Leaf */}
+      <path d="M24 40 L24 24 Q16 18 10 22 Q6 12 16 8 Q24 4 30 10 Q36 16 30 24 Q28 28 24 24" fill="none" />
+      <path d="M18 18 L24 24" strokeWidth="1.5" />
+      {/* Confetti dots */}
+      <circle cx="8" cy="8" r="2" fill="#fbbf24" stroke="none" />
+      <circle cx="40" cy="6" r="2" fill="#f87171" stroke="none" />
+      <circle cx="6" cy="32" r="1.5" fill="#6ee7b7" stroke="none" />
+      <circle cx="42" cy="16" r="1.5" fill="#fbbf24" stroke="none" />
+      {/* Sparkle lines */}
+      <path d="M36 30 L40 28" strokeWidth="2" />
+      <path d="M38 34 L42 34" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function IconKitchenScreen() {
+  return (
+    <svg {...iconProps}>
+      {/* Monitor */}
+      <rect x="4" y="6" width="40" height="28" rx="3" />
+      {/* Stand */}
+      <line x1="24" y1="34" x2="24" y2="40" strokeWidth="2.5" />
+      <line x1="16" y1="40" x2="32" y2="40" strokeWidth="2.5" />
+      {/* Three columns */}
+      <line x1="18" y1="12" x2="18" y2="28" strokeWidth="1.5" />
+      <line x1="30" y1="12" x2="30" y2="28" strokeWidth="1.5" />
+      {/* Column content dots */}
+      <rect x="8" y="14" width="6" height="3" rx="1" stroke="#fbbf24" strokeWidth="1.5" />
+      <rect x="8" y="20" width="6" height="3" rx="1" stroke="#fbbf24" strokeWidth="1.5" />
+      <rect x="22" y="14" width="6" height="3" rx="1" stroke="#6ee7b7" strokeWidth="1.5" />
+      <rect x="34" y="14" width="6" height="3" rx="1" stroke="#6ee7b7" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconNewOrder() {
+  return (
+    <svg {...iconProps}>
+      {/* Bell */}
+      <path d="M18 8 Q18 2 24 2 Q30 2 30 8 L32 20 L16 20 Z" />
+      <line x1="14" y1="20" x2="34" y2="20" strokeWidth="2.5" />
+      <circle cx="24" cy="24" r="2" fill="#6ee7b7" stroke="none" />
+      {/* Order card */}
+      <rect x="30" y="26" width="14" height="18" rx="2" stroke="#fbbf24" strokeWidth="2" />
+      <line x1="33" y1="31" x2="41" y2="31" stroke="#fbbf24" strokeWidth="1.5" />
+      <line x1="33" y1="35" x2="41" y2="35" stroke="#fbbf24" strokeWidth="1.5" />
+      <line x1="33" y1="39" x2="38" y2="39" stroke="#fbbf24" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconClickButton() {
+  return (
+    <svg {...iconProps}>
+      {/* Button */}
+      <rect x="8" y="28" width="32" height="12" rx="6" />
+      {/* Finger pointing down */}
+      <path d="M24 6 L24 22" strokeWidth="4" />
+      <circle cx="24" cy="6" r="4" />
+      {/* Click ripples */}
+      <path d="M14 26 Q14 22 18 22" stroke="#fbbf24" strokeWidth="1.5" />
+      <path d="M34 26 Q34 22 30 22" stroke="#fbbf24" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconPlateMarker() {
+  return (
+    <svg {...iconProps}>
+      {/* Plate */}
+      <ellipse cx="24" cy="32" rx="18" ry="8" />
+      <ellipse cx="24" cy="32" rx="12" ry="5" strokeWidth="1.5" />
+      {/* Number marker flag */}
+      <line x1="24" y1="8" x2="24" y2="28" strokeWidth="2.5" />
+      <rect x="24" y="6" width="14" height="10" rx="2" fill="none" stroke="#fbbf24" strokeWidth="2" />
+      {/* Number on flag */}
+      <text x="28" y="14" fontSize="8" fontWeight="bold" fill="#fbbf24" stroke="none">3</text>
+    </svg>
+  );
+}
+
+/* ── PainCard SVG Icons ── */
+
+function IconPainPaper() {
+  return (
+    <svg {...iconProps}>
+      {/* Paper sheet */}
+      <path d="M12 4 L32 4 L36 10 L36 44 L12 44 Z" />
+      <path d="M32 4 L32 10 L36 10" strokeWidth="2" />
+      {/* Lines on paper */}
+      <line x1="16" y1="18" x2="32" y2="18" strokeWidth="1.5" />
+      <line x1="16" y1="24" x2="32" y2="24" strokeWidth="1.5" />
+      <line x1="16" y1="30" x2="28" y2="30" strokeWidth="1.5" />
+      {/* X mark */}
+      <path d="M30 32 L42 44" stroke="#f87171" strokeWidth="3" />
+      <path d="M42 32 L30 44" stroke="#f87171" strokeWidth="3" />
+    </svg>
+  );
+}
+
+function IconPainTheft() {
+  return (
+    <svg {...iconProps}>
+      {/* Shield */}
+      <path d="M24 4 L38 12 L38 26 Q38 40 24 44 Q10 40 10 26 L10 12 Z" />
+      {/* Lock */}
+      <rect x="18" y="22" width="12" height="10" rx="2" stroke="#fbbf24" strokeWidth="2" />
+      <path d="M20 22 L20 18 Q20 12 24 12 Q28 12 28 18 L28 22" stroke="#fbbf24" strokeWidth="2" />
+      {/* Keyhole */}
+      <circle cx="24" cy="27" r="2" fill="#fbbf24" stroke="none" />
+    </svg>
+  );
+}
+
+function IconPainTray() {
+  return (
+    <svg {...iconProps}>
+      {/* Number display */}
+      <rect x="8" y="8" width="32" height="32" rx="4" />
+      {/* Hash/number sign */}
+      <line x1="18" y1="14" x2="16" y2="36" strokeWidth="3" />
+      <line x1="32" y1="14" x2="30" y2="36" strokeWidth="3" />
+      <line x1="12" y1="20" x2="36" y2="20" strokeWidth="3" />
+      <line x1="12" y1="30" x2="36" y2="30" strokeWidth="3" />
+    </svg>
+  );
+}
+
+function IconPainMissed() {
+  return (
+    <svg {...iconProps}>
+      {/* Bell */}
+      <path d="M16 10 Q16 2 24 2 Q32 2 32 10 L34 24 L14 24 Z" />
+      <line x1="12" y1="24" x2="36" y2="24" strokeWidth="2.5" />
+      <circle cx="24" cy="28" r="2" fill="#6ee7b7" stroke="none" />
+      {/* Exclamation mark */}
+      <line x1="40" y1="8" x2="40" y2="24" stroke="#f87171" strokeWidth="3" />
+      <circle cx="40" cy="30" r="2" fill="#f87171" stroke="none" />
+    </svg>
+  );
+}
+
+function IconPainNoRealtime() {
+  return (
+    <svg {...iconProps}>
+      {/* Lightning bolt */}
+      <path d="M22 4 L14 24 L22 24 L18 44 L36 20 L26 20 L32 4 Z" fill="none" />
+      {/* Refresh arrow */}
+      <path d="M38 14 Q44 20 40 28" stroke="#fbbf24" strokeWidth="2" />
+      <path d="M36 12 L38 14 L42 12" stroke="#fbbf24" strokeWidth="2" />
+      {/* X slash */}
+      <line x1="4" y1="4" x2="12" y2="12" stroke="#f87171" strokeWidth="2.5" />
+      <line x1="12" y1="4" x2="4" y2="12" stroke="#f87171" strokeWidth="2.5" />
+    </svg>
+  );
+}
+
+function IconPainDoubleQueue() {
+  return (
+    <svg {...iconProps}>
+      {/* Person */}
+      <circle cx="14" cy="10" r="5" />
+      <path d="M14 15 L14 30" strokeWidth="2.5" />
+      <path d="M14 30 L8 40" strokeWidth="2.5" />
+      <path d="M14 30 L20 40" strokeWidth="2.5" />
+      <path d="M6 22 L14 18 L22 22" strokeWidth="2.5" />
+      {/* Queue lines */}
+      <line x1="30" y1="12" x2="44" y2="12" strokeWidth="2" />
+      <line x1="30" y1="20" x2="44" y2="20" strokeWidth="2" />
+      <line x1="30" y1="28" x2="44" y2="28" strokeWidth="2" />
+      {/* Dots representing people in queue */}
+      <circle cx="28" cy="12" r="2" fill="#f87171" stroke="none" />
+      <circle cx="28" cy="20" r="2" fill="#f87171" stroke="none" />
+      <circle cx="28" cy="28" r="2" fill="#f87171" stroke="none" />
+    </svg>
+  );
+}
+
 export default function AboutPage() {
   const [tab, setTab] = useState<Tab>("student");
 
@@ -216,32 +484,32 @@ export default function AboutPage() {
         <h2>Pain Points & Solutions</h2>
         <div className="pain-grid">
           <PainCard
-            icon="📄"
+            icon={<IconPainPaper />}
             pain="Paper waste"
             solution="Fully digital ordering — zero paper per order. Each order saves 2 sheets."
           />
           <PainCard
-            icon="🔒"
+            icon={<IconPainTheft />}
             pain="Order theft"
             solution="Unique 6-character pickup code per order. Staff visually verifies before handoff."
           />
           <PainCard
-            icon="🔢"
+            icon={<IconPainTray />}
             pain="Tray identification"
             solution="Reusable plate markers (1–50) auto-assigned. Freed up when picked up."
           />
           <PainCard
-            icon="🔔"
+            icon={<IconPainMissed />}
             pain="Missed orders"
             solution="Sound alert on new orders. Overdue orders (3+ min) flash yellow."
           />
           <PainCard
-            icon="⚡"
+            icon={<IconPainNoRealtime />}
             pain="No real-time updates"
             solution="Socket.io pushes status changes instantly. No page refresh needed."
           />
           <PainCard
-            icon="🧍"
+            icon={<IconPainDoubleQueue />}
             pain="Double queuing"
             solution="Order on phone, only come once to pick up. No ordering queue."
           />
@@ -266,7 +534,7 @@ function ProblemItem({ icon, title, desc, stat }: { icon: ReactNode; title: stri
   );
 }
 
-function PainCard({ icon, pain, solution }: { icon: string; pain: string; solution: string }) {
+function PainCard({ icon, pain, solution }: { icon: ReactNode; pain: string; solution: string }) {
   return (
     <div className="pain-card">
       <span className="pain-icon">{icon}</span>
@@ -281,7 +549,7 @@ function StudentFlow() {
     <div className="flow-container">
       <FlowStep
         number={1}
-        icon="📱"
+        icon={<IconBrowseMenu />}
         title="Browse Menu"
         description="Open GreenBite on your phone. Filter by category: Mains, Sides, Desserts, Drinks. Tap 'Add to Cart' for items you want."
         color="green"
@@ -289,7 +557,7 @@ function StudentFlow() {
       <FlowArrow />
       <FlowStep
         number={2}
-        icon="🛒"
+        icon={<IconReviewCart />}
         title="Review Cart & Place Order"
         description="Adjust quantities, enter your name, tap 'Place Order'. System generates your order number and a unique 6-character pickup code."
         color="green"
@@ -297,7 +565,7 @@ function StudentFlow() {
       <FlowArrow />
       <FlowStep
         number={3}
-        icon="📊"
+        icon={<IconTrackOrder />}
         title="Track Order in Real-Time"
         description="Auto-redirected to status page. See live progress: pending → preparing → ready → picked-up. Your pickup code is displayed prominently."
         color="blue"
@@ -305,7 +573,7 @@ function StudentFlow() {
       <FlowArrow />
       <FlowStep
         number={4}
-        icon="⏳"
+        icon={<IconWaitReady />}
         title="Wait for 'Ready' Status"
         description="Phone updates automatically via Socket.io — no refresh needed. When ready, you'll also see your assigned plate number."
         color="blue"
@@ -313,7 +581,7 @@ function StudentFlow() {
       <FlowArrow />
       <FlowStep
         number={5}
-        icon="🏪"
+        icon={<IconPickUp />}
         title="Pick Up Your Food"
         description="Go to the pickup counter. Find your tray at the plate number slot. Show your pickup code to staff. They verify visually — code match + plate match = yours!"
         color="emerald"
@@ -321,7 +589,7 @@ function StudentFlow() {
       <FlowArrow />
       <FlowStep
         number={6}
-        icon="🎉"
+        icon={<IconDoneZeroPaper />}
         title="Done! Zero Paper Used"
         description="Staff marks your order as picked-up. The plate marker returns to the available pool for reuse. No receipts, no paper, just food!"
         color="emerald"
@@ -335,7 +603,7 @@ function KitchenFlow() {
     <div className="flow-container">
       <FlowStep
         number={1}
-        icon="🖥️"
+        icon={<IconKitchenScreen />}
         title="Kitchen Dashboard"
         description="Large screen showing 3 columns: Pending | Preparing | Ready. New orders auto-appear with a beep sound. Screen faces staff only."
         color="orange"
@@ -343,7 +611,7 @@ function KitchenFlow() {
       <FlowArrow />
       <FlowStep
         number={2}
-        icon="🔔"
+        icon={<IconNewOrder />}
         title="New Order Arrives"
         description="Order appears in 'Pending' column with student name, items, and total. Sound notification plays. Orders pending 3+ minutes flash yellow as a reminder."
         color="orange"
@@ -351,7 +619,7 @@ function KitchenFlow() {
       <FlowArrow />
       <FlowStep
         number={3}
-        icon="☝️"
+        icon={<IconClickButton />}
         title="Click 'Mark as Ready'"
         subtitle="(1st click)"
         description="When food is done, one click does everything: auto-transitions pending → preparing → ready, auto-assigns the lowest available plate number."
@@ -360,7 +628,7 @@ function KitchenFlow() {
       <FlowArrow />
       <FlowStep
         number={4}
-        icon="📌"
+        icon={<IconPlateMarker />}
         title="Place Plate Marker on Tray"
         description="Screen shows assigned plate number (e.g. #3). Place the matching physical marker next to the tray. Put tray at slot #3 on the pickup counter."
         color="blue"
@@ -391,7 +659,7 @@ function KitchenFlow() {
       <FlowArrow />
       <FlowStep
         number={5}
-        icon="☝️"
+        icon={<IconClickButton />}
         title="Click 'Mark as Picked Up'"
         subtitle="(2nd click)"
         description="Order disappears from Ready column. Plate slot #3 is freed and returns to the available pool — ready for the next order. ♻️"
@@ -425,7 +693,7 @@ function FlowStep({
   color,
 }: {
   number: number;
-  icon: string;
+  icon: ReactNode;
   title: string;
   subtitle?: string;
   description: string;
