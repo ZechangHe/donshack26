@@ -407,17 +407,83 @@ export default function AboutPage() {
   const [tab, setTab] = useState<Tab>("student");
 
   return (
-    <div className="about-page">
-      <h1>How GreenBite Works</h1>
-      <p className="about-subtitle">Zero paper. Reusable plate markers. Real-time updates.</p>
-
-      <div className="problems-hero">
-        <h2>The Real Problems We Solve</h2>
-        <p className="problems-hero-desc">
-          School cafeterias still run on paper slips, manual queues, and guesswork.
-          GreenBite fixes all of that — digitally.
+    <div className="landing-page">
+      {/* ── Section 1: Hero ── */}
+      <section className="landing-hero">
+        <h1 className="landing-hero-title">Zero Paper. Zero Queues.<br />Just Food.</h1>
+        <p className="landing-hero-sub">
+          GreenBite is a paperless cafeteria ordering system that eliminates waste, speeds up service, and gives students real-time order tracking.
         </p>
-        <div className="problems-list">
+        <div className="landing-hero-ctas">
+          <a href="/menu" className="landing-btn landing-btn-primary">Try the Menu →</a>
+          <a href="/kitchen" className="landing-btn landing-btn-outline">See Kitchen View →</a>
+        </div>
+        <div className="landing-phone-mockup">
+          <div className="landing-phone-frame">
+            <div className="landing-phone-notch" />
+            <div className="landing-phone-screen">
+              <div className="landing-mock-header">
+                <span className="landing-mock-brand">GreenBite</span>
+                <span className="landing-mock-cart">Cart (2)</span>
+              </div>
+              <div className="landing-mock-cards">
+                <div className="landing-mock-card">
+                  <span className="landing-mock-emoji">🍔</span>
+                  <div>
+                    <div className="landing-mock-name">Classic Burger</div>
+                    <div className="landing-mock-price">$5.50</div>
+                  </div>
+                </div>
+                <div className="landing-mock-card">
+                  <span className="landing-mock-emoji">🥗</span>
+                  <div>
+                    <div className="landing-mock-name">Garden Salad</div>
+                    <div className="landing-mock-price">$4.00</div>
+                  </div>
+                </div>
+                <div className="landing-mock-card">
+                  <span className="landing-mock-emoji">🍕</span>
+                  <div>
+                    <div className="landing-mock-name">Margherita Pizza</div>
+                    <div className="landing-mock-price">$6.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 2: Impact Numbers ── */}
+      <section className="landing-stats">
+        <div className="landing-stats-grid">
+          <div className="landing-stat">
+            <div className="landing-stat-num">1,000+</div>
+            <div className="landing-stat-label">sheets saved / day</div>
+          </div>
+          <div className="landing-stat-divider" />
+          <div className="landing-stat">
+            <div className="landing-stat-num">0</div>
+            <div className="landing-stat-label">paper per order</div>
+          </div>
+          <div className="landing-stat-divider" />
+          <div className="landing-stat">
+            <div className="landing-stat-num">50%</div>
+            <div className="landing-stat-label">faster pickup</div>
+          </div>
+          <div className="landing-stat-divider" />
+          <div className="landing-stat">
+            <div className="landing-stat-num">100%</div>
+            <div className="landing-stat-label">digital</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 3: Problems We Solve ── */}
+      <section className="landing-section">
+        <h2 className="landing-section-title">The Real Problems We Solve</h2>
+        <p className="landing-section-sub">School cafeterias still run on paper slips, manual queues, and guesswork.</p>
+        <div className="landing-problems-grid">
           <ProblemItem
             icon={<IconEnvironment />}
             title="Environmental Impact at Scale"
@@ -461,28 +527,32 @@ export default function AboutPage() {
             stat="Auto-assigned reusable plate markers (1–50)"
           />
         </div>
-      </div>
+      </section>
 
-      <div className="flow-tabs">
-        <button
-          className={`flow-tab ${tab === "student" ? "active" : ""}`}
-          onClick={() => setTab("student")}
-        >
-          🎓 Student Flow
-        </button>
-        <button
-          className={`flow-tab ${tab === "kitchen" ? "active" : ""}`}
-          onClick={() => setTab("kitchen")}
-        >
-          👨‍🍳 Kitchen Staff Flow
-        </button>
-      </div>
+      {/* ── Section 4: How It Works ── */}
+      <section className="landing-section landing-section-gray">
+        <h2 className="landing-section-title">How It Works</h2>
+        <div className="landing-tabs">
+          <button
+            className={`landing-tab ${tab === "student" ? "landing-tab-active" : ""}`}
+            onClick={() => setTab("student")}
+          >
+            Student Flow
+          </button>
+          <button
+            className={`landing-tab ${tab === "kitchen" ? "landing-tab-active" : ""}`}
+            onClick={() => setTab("kitchen")}
+          >
+            Kitchen Staff Flow
+          </button>
+        </div>
+        {tab === "student" ? <StudentFlow /> : <KitchenFlow />}
+      </section>
 
-      {tab === "student" ? <StudentFlow /> : <KitchenFlow />}
-
-      <div className="about-pain-points">
-        <h2>Pain Points & Solutions</h2>
-        <div className="pain-grid">
+      {/* ── Section 5: Pain Points & Solutions ── */}
+      <section className="landing-section">
+        <h2 className="landing-section-title">Pain Points & Solutions</h2>
+        <div className="landing-pain-grid">
           <PainCard
             icon={<IconPainPaper />}
             pain="Paper waste"
@@ -514,20 +584,66 @@ export default function AboutPage() {
             solution="Order on phone, only come once to pick up. No ordering queue."
           />
         </div>
-      </div>
+      </section>
+
+      {/* ── Section 6: Tech Stack ── */}
+      <section className="landing-section landing-section-gray">
+        <h2 className="landing-section-title">Built for Speed & Sustainability</h2>
+        <div className="landing-tech-grid">
+          <div className="landing-tech-card">
+            <div className="landing-tech-icon">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 4 L14 24 L22 24 L18 44 L36 20 L26 20 L32 4 Z" />
+              </svg>
+            </div>
+            <h3>Real-time</h3>
+            <p>Socket.io for instant order updates — no page refresh needed.</p>
+          </div>
+          <div className="landing-tech-card">
+            <div className="landing-tech-icon">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="14" y="4" width="20" height="40" rx="4" />
+                <line x1="14" y1="10" x2="34" y2="10" strokeWidth="1.5" />
+                <line x1="14" y1="36" x2="34" y2="36" strokeWidth="1.5" />
+                <circle cx="24" cy="40" r="1.5" />
+              </svg>
+            </div>
+            <h3>Mobile-first</h3>
+            <p>Responsive design — works on any phone, tablet, or laptop browser.</p>
+          </div>
+          <div className="landing-tech-card">
+            <div className="landing-tech-icon">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M24 40 L24 24 Q16 18 10 22 Q6 12 16 8 Q24 4 30 10 Q36 16 30 24 Q28 28 24 24" />
+                <path d="M18 18 L24 24" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <h3>Zero waste</h3>
+            <p>No paper, no plastic markers — fully reusable system from order to pickup.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 7: CTA Footer ── */}
+      <section className="landing-cta-footer">
+        <h2>Ready to go paperless?</h2>
+        <p>Try GreenBite now — no account needed.</p>
+        <a href="/menu" className="landing-btn landing-btn-white">Start Ordering →</a>
+      </section>
     </div>
   );
 }
 
 function ProblemItem({ icon, title, desc, stat }: { icon: ReactNode; title: string; desc: string; stat: string }) {
   return (
-    <div className="problem-item">
-      <span className="problem-item-icon">{icon}</span>
-      <div className="problem-item-content">
+    <div className="landing-problem-card">
+      <span className="landing-problem-icon">{icon}</span>
+      <div className="landing-problem-content">
         <h3>{title}</h3>
         <p>{desc}</p>
-        <div className="problem-item-stat">
-          <span className="checkmark">✅</span> {stat}
+        <div className="landing-problem-stat">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#059669"/><path d="M5 8 L7 10 L11 6" stroke="#fff" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <span>{stat}</span>
         </div>
       </div>
     </div>
@@ -536,8 +652,8 @@ function ProblemItem({ icon, title, desc, stat }: { icon: ReactNode; title: stri
 
 function PainCard({ icon, pain, solution }: { icon: ReactNode; pain: string; solution: string }) {
   return (
-    <div className="pain-card">
-      <span className="pain-icon">{icon}</span>
+    <div className="landing-pain-card">
+      <span className="landing-pain-icon">{icon}</span>
       <h3>{pain}</h3>
       <p>{solution}</p>
     </div>
@@ -546,140 +662,50 @@ function PainCard({ icon, pain, solution }: { icon: ReactNode; pain: string; sol
 
 function StudentFlow() {
   return (
-    <div className="flow-container">
-      <FlowStep
-        number={1}
-        icon={<IconBrowseMenu />}
-        title="Browse Menu"
-        description="Open GreenBite on your phone. Filter by category: Mains, Sides, Desserts, Drinks. Tap 'Add to Cart' for items you want."
-        color="green"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={2}
-        icon={<IconReviewCart />}
-        title="Review Cart & Place Order"
-        description="Adjust quantities, enter your name, tap 'Place Order'. System generates your order number and a unique 6-character pickup code."
-        color="green"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={3}
-        icon={<IconTrackOrder />}
-        title="Track Order in Real-Time"
-        description="Auto-redirected to status page. See live progress: pending → preparing → ready → picked-up. Your pickup code is displayed prominently."
-        color="blue"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={4}
-        icon={<IconWaitReady />}
-        title="Wait for 'Ready' Status"
-        description="Phone updates automatically via Socket.io — no refresh needed. When ready, you'll also see your assigned plate number."
-        color="blue"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={5}
-        icon={<IconPickUp />}
-        title="Pick Up Your Food"
-        description="Go to the pickup counter. Find your tray at the plate number slot. Show your pickup code to staff. They verify visually — code match + plate match = yours!"
-        color="emerald"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={6}
-        icon={<IconDoneZeroPaper />}
-        title="Done! Zero Paper Used"
-        description="Staff marks your order as picked-up. The plate marker returns to the available pool for reuse. No receipts, no paper, just food!"
-        color="emerald"
-      />
+    <div className="landing-flow">
+      <FlowStep number={1} icon={<IconBrowseMenu />} title="Browse Menu" description="Open GreenBite on your phone. Filter by category: Mains, Sides, Desserts, Drinks. Tap 'Add to Cart' for items you want." color="green" />
+      <FlowStep number={2} icon={<IconReviewCart />} title="Review Cart & Place Order" description="Adjust quantities, enter your name, tap 'Place Order'. System generates your order number and a unique 6-character pickup code." color="green" />
+      <FlowStep number={3} icon={<IconTrackOrder />} title="Track Order in Real-Time" description="Auto-redirected to status page. See live progress: pending → preparing → ready → picked-up. Your pickup code is displayed prominently." color="blue" />
+      <FlowStep number={4} icon={<IconWaitReady />} title="Wait for 'Ready' Status" description="Phone updates automatically via Socket.io — no refresh needed. When ready, you'll also see your assigned plate number." color="blue" />
+      <FlowStep number={5} icon={<IconPickUp />} title="Pick Up Your Food" description="Go to the pickup counter. Find your tray at the plate number slot. Show your pickup code to staff. They verify visually — code match + plate match = yours!" color="emerald" />
+      <FlowStep number={6} icon={<IconDoneZeroPaper />} title="Done! Zero Paper Used" description="Staff marks your order as picked-up. The plate marker returns to the available pool for reuse. No receipts, no paper, just food!" color="emerald" />
     </div>
   );
 }
 
 function KitchenFlow() {
   return (
-    <div className="flow-container">
-      <FlowStep
-        number={1}
-        icon={<IconKitchenScreen />}
-        title="Kitchen Dashboard"
-        description="Large screen showing 3 columns: Pending | Preparing | Ready. New orders auto-appear with a beep sound. Screen faces staff only."
-        color="orange"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={2}
-        icon={<IconNewOrder />}
-        title="New Order Arrives"
-        description="Order appears in 'Pending' column with student name, items, and total. Sound notification plays. Orders pending 3+ minutes flash yellow as a reminder."
-        color="orange"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={3}
-        icon={<IconClickButton />}
-        title="Click 'Mark as Ready'"
-        subtitle="(1st click)"
-        description="When food is done, one click does everything: auto-transitions pending → preparing → ready, auto-assigns the lowest available plate number."
-        color="blue"
-      />
-      <FlowArrow />
-      <FlowStep
-        number={4}
-        icon={<IconPlateMarker />}
-        title="Place Plate Marker on Tray"
-        description="Screen shows assigned plate number (e.g. #3). Place the matching physical marker next to the tray. Put tray at slot #3 on the pickup counter."
-        color="blue"
-      />
-      <FlowArrow />
-      <div className="flow-verify-box">
-        <h3>👀 Student Arrives — Visual 3-Way Check</h3>
-        <div className="verify-three-way">
-          <div className="verify-item">
-            <div className="verify-label">Student Phone</div>
-            <div className="verify-code">🔑 AX7K2M</div>
-            <div className="verify-code">🔢 #3</div>
+    <div className="landing-flow">
+      <FlowStep number={1} icon={<IconKitchenScreen />} title="Kitchen Dashboard" description="Large screen showing 3 columns: Pending | Preparing | Ready. New orders auto-appear with a beep sound. Screen faces staff only." color="orange" />
+      <FlowStep number={2} icon={<IconNewOrder />} title="New Order Arrives" description="Order appears in 'Pending' column with student name, items, and total. Sound notification plays. Orders pending 3+ minutes flash yellow as a reminder." color="orange" />
+      <FlowStep number={3} icon={<IconClickButton />} title="Click 'Mark as Ready'" subtitle="(1st click)" description="When food is done, one click does everything: auto-transitions pending → preparing → ready, auto-assigns the lowest available plate number." color="blue" />
+      <FlowStep number={4} icon={<IconPlateMarker />} title="Place Plate Marker on Tray" description="Screen shows assigned plate number (e.g. #3). Place the matching physical marker next to the tray. Put tray at slot #3 on the pickup counter." color="blue" />
+      <div className="landing-flow-step landing-flow-verify">
+        <div className="landing-flow-number" style={{ background: "#059669" }}>5</div>
+        <div className="landing-flow-body">
+          <h3>Student Arrives — Visual 3-Way Check</h3>
+          <div className="verify-three-way">
+            <div className="verify-item">
+              <div className="verify-label">Student Phone</div>
+              <div className="verify-code">AX7K2M</div>
+              <div className="verify-code">#3</div>
+            </div>
+            <div className="verify-equals">=</div>
+            <div className="verify-item">
+              <div className="verify-label">Kitchen Screen</div>
+              <div className="verify-code">AX7K2M</div>
+              <div className="verify-code">#3</div>
+            </div>
+            <div className="verify-equals">=</div>
+            <div className="verify-item">
+              <div className="verify-label">Pickup Counter</div>
+              <div className="verify-code">Slot #3</div>
+            </div>
           </div>
-          <div className="verify-equals">=?</div>
-          <div className="verify-item">
-            <div className="verify-label">Kitchen Screen</div>
-            <div className="verify-code">🔑 AX7K2M</div>
-            <div className="verify-code">🔢 #3</div>
-          </div>
-          <div className="verify-equals">=?</div>
-          <div className="verify-item">
-            <div className="verify-label">Pickup Counter</div>
-            <div className="verify-code">🍔 Slot #3</div>
-          </div>
+          <p className="verify-result">All match → hand over the food!</p>
         </div>
-        <p className="verify-result">✅ All match → hand over the food!</p>
       </div>
-      <FlowArrow />
-      <FlowStep
-        number={5}
-        icon={<IconClickButton />}
-        title="Click 'Mark as Picked Up'"
-        subtitle="(2nd click)"
-        description="Order disappears from Ready column. Plate slot #3 is freed and returns to the available pool — ready for the next order. ♻️"
-        color="emerald"
-      />
-
-      <div className="flow-summary">
-        <h3>📋 Staff Action Summary</h3>
-        <div className="summary-items">
-          <div className="summary-item">
-            <span className="summary-num">1</span>
-            <span>Food done → click <strong>"Mark as ready"</strong> → place plate marker</span>
-          </div>
-          <div className="summary-item">
-            <span className="summary-num">2</span>
-            <span>Student arrives → visual check → click <strong>"Mark as picked-up"</strong></span>
-          </div>
-        </div>
-        <p className="summary-footer">Only 2 clicks per order · Zero paper 🌱 · Reusable markers ♻️ · Real-time ⚡</p>
-      </div>
+      <FlowStep number={6} icon={<IconClickButton />} title="Click 'Mark as Picked Up'" subtitle="(2nd click)" description="Order disappears from Ready column. Plate slot #3 is freed and returns to the available pool — ready for the next order." color="emerald" />
     </div>
   );
 }
@@ -699,27 +725,18 @@ function FlowStep({
   description: string;
   color: "green" | "blue" | "orange" | "emerald";
 }) {
+  const colors: Record<string, string> = { green: "#22c55e", blue: "#3b82f6", orange: "#f59e0b", emerald: "#10b981" };
   return (
-    <div className={`flow-step flow-step-${color}`}>
-      <div className="flow-step-number">{number}</div>
-      <div className="flow-step-icon">{icon}</div>
-      <div className="flow-step-content">
+    <div className="landing-flow-step">
+      <div className="landing-flow-number" style={{ background: colors[color] }}>{number}</div>
+      <div className="landing-flow-icon">{icon}</div>
+      <div className="landing-flow-body">
         <h3>
           {title}
-          {subtitle && <span className="flow-step-subtitle">{subtitle}</span>}
+          {subtitle && <span className="landing-flow-subtitle">{subtitle}</span>}
         </h3>
         <p>{description}</p>
       </div>
-    </div>
-  );
-}
-
-function FlowArrow() {
-  return (
-    <div className="flow-arrow">
-      <svg width="24" height="32" viewBox="0 0 24 32">
-        <path d="M12 0 L12 24 M4 18 L12 28 L20 18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
     </div>
   );
 }
