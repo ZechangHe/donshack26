@@ -7,10 +7,16 @@ interface Props {
 }
 
 const NEXT_STATUS: Record<string, Order["status"] | null> = {
-  pending: "ready",       // server auto-transitions through "preparing" + auto-assigns plate
-  preparing: "ready",     // in case order is mid-transition
+  pending: "preparing",
+  preparing: "ready",
   ready: "picked-up",
   "picked-up": null,
+};
+
+const BUTTON_LABEL: Record<string, string> = {
+  pending: "Start Preparing",
+  preparing: "Mark as Ready",
+  ready: "Mark as Picked Up",
 };
 
 export default function OrderCard({ order, onUpdateStatus }: Props) {
@@ -50,7 +56,7 @@ export default function OrderCard({ order, onUpdateStatus }: Props) {
         <span className="order-card-total">${order.total.toFixed(2)}</span>
         {next && (
           <button className="btn btn-primary" onClick={() => onUpdateStatus(order.id, next)}>
-            Mark as {next}
+            {BUTTON_LABEL[order.status] ?? `Mark as ${next}`}
           </button>
         )}
       </div>

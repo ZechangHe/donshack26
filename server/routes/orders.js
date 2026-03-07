@@ -51,9 +51,8 @@ router.get("/:id", (req, res) => {
   res.json(order);
 });
 
-// Update order status
-// If pending → ready, auto-transition through "preparing" first
-// Auto-assigns next plate number (1→2→...→50→1→...) when marking ready
+// Update order status (manual 2-step: pending → preparing → ready → picked-up)
+// Auto-assigns next plate number when marking ready
 router.patch("/:id/status", (req, res) => {
   const { status } = req.body;
   const validStatuses = ["pending", "preparing", "ready", "picked-up"];
@@ -66,26 +65,7 @@ router.patch("/:id/status", (req, res) => {
 
   const io = req.app.get("io");
 
-  // Auto-transition: pending → preparing → ready (with auto plate assignment)
-  if (current.status === "pending" && status === "ready") {
-    const preparing = db.updateOrderStatus(req.params.id, "preparing");
-    if (io) {
-      io.emit("order-updated", preparing);
-    }
-    // Brief delay so student sees "preparing" before "ready"
-    setTimeout(() => {
-      db.assignNextPlate(req.params.id);
-      const ready = db.updateOrderStatus(req.params.id, "ready");
-      if (io) {
-        io.emit("order-updated", ready);
-        io.emit("stats-update", db.getStats());
-      }
-    }, 1500);
-    res.json(preparing);
-    return;
-  }
-
-  // If marking ready from preparing, also auto-assign plate
+  // Auto-assign plate number when marking as ready
   if (status === "ready" && !current.plateNumber) {
     db.assignNextPlate(req.params.id);
   }

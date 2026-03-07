@@ -306,6 +306,27 @@ function IconPlateMarker() {
   );
 }
 
+function IconDuplicateWork() {
+  return (
+    <svg {...iconProps}>
+      {/* Cook 1 */}
+      <circle cx="12" cy="10" r="4" />
+      <path d="M12 14 L12 28" strokeWidth="2.5" />
+      <path d="M6 20 L12 16 L18 20" strokeWidth="2" />
+      {/* Cook 2 */}
+      <circle cx="36" cy="10" r="4" />
+      <path d="M36 14 L36 28" strokeWidth="2.5" />
+      <path d="M30 20 L36 16 L42 20" strokeWidth="2" />
+      {/* Same food item (both making it!) */}
+      <circle cx="12" cy="36" r="6" stroke="#fbbf24" strokeWidth="2" />
+      <circle cx="36" cy="36" r="6" stroke="#fbbf24" strokeWidth="2" />
+      {/* Conflict X */}
+      <path d="M20 30 L28 38" stroke="#f87171" strokeWidth="3" />
+      <path d="M28 30 L20 38" stroke="#f87171" strokeWidth="3" />
+    </svg>
+  );
+}
+
 /* ── PainCard SVG Icons ── */
 
 function IconPainPaper() {
@@ -515,6 +536,12 @@ export default function AboutPage() {
             stat="Real-time 3-column dashboard"
           />
           <ProblemItem
+            icon={<IconDuplicateWork />}
+            title="Duplicate Work Between Cooks"
+            desc="Two cooks see the same order and both start making it. No way to 'claim' an order — wasted food, wasted time."
+            stat="Claim-to-cook: tap 'Start Preparing' to reserve"
+          />
+          <ProblemItem
             icon={<IconZeroVisibility />}
             title="Zero Visibility for Students"
             desc="Once you order, you have no idea if it's being made, almost ready, or forgotten. You just wait and hope."
@@ -582,6 +609,11 @@ export default function AboutPage() {
             icon={<IconPainDoubleQueue />}
             pain="Double queuing"
             solution="Order on phone, only come once to pick up. No ordering queue."
+          />
+          <PainCard
+            icon={<IconDuplicateWork />}
+            pain="Duplicate cook work"
+            solution="'Start Preparing' button claims the order. Other staff see it's taken — no wasted food."
           />
         </div>
       </section>
@@ -678,8 +710,8 @@ function KitchenFlow() {
     <div className="landing-flow">
       <FlowStep number={1} icon={<IconKitchenScreen />} title="Kitchen Dashboard" description="Large screen showing 3 columns: Pending | Preparing | Ready. New orders auto-appear with a beep sound. Screen faces staff only." color="orange" />
       <FlowStep number={2} icon={<IconNewOrder />} title="New Order Arrives" description="Order appears in 'Pending' column with student name, items, and total. Sound notification plays. Orders pending 3+ minutes flash yellow as a reminder." color="orange" />
-      <FlowStep number={3} icon={<IconClickButton />} title="Click 'Mark as Ready'" subtitle="(1st click)" description="When food is done, one click does everything: auto-transitions pending → preparing → ready, auto-assigns the lowest available plate number." color="blue" />
-      <FlowStep number={4} icon={<IconPlateMarker />} title="Place Plate Marker on Tray" description="Screen shows assigned plate number (e.g. #3). Place the matching physical marker next to the tray. Put tray at slot #3 on the pickup counter." color="blue" />
+      <FlowStep number={3} icon={<IconClickButton />} title="Click 'Start Preparing'" subtitle="(1st click)" description="Tap 'Start Preparing' to claim the order. It moves from Pending to Preparing column. Other staff see it's taken — no two cooks make the same dish." color="blue" />
+      <FlowStep number={4} icon={<IconPlateMarker />} title="Click 'Mark as Ready'" subtitle="(2nd click)" description="Food is done — tap 'Mark as Ready'. System auto-assigns the lowest available plate number (e.g. #3). Place the matching physical marker on the tray and put it at slot #3." color="blue" />
       <div className="landing-flow-step landing-flow-verify">
         <div className="landing-flow-number" style={{ background: "#059669" }}>5</div>
         <div className="landing-flow-body">
@@ -705,7 +737,7 @@ function KitchenFlow() {
           <p className="verify-result">All match → hand over the food!</p>
         </div>
       </div>
-      <FlowStep number={6} icon={<IconClickButton />} title="Click 'Mark as Picked Up'" subtitle="(2nd click)" description="Order disappears from Ready column. Plate slot #3 is freed and returns to the available pool — ready for the next order." color="emerald" />
+      <FlowStep number={6} icon={<IconClickButton />} title="Click 'Mark as Picked Up'" subtitle="(3rd click)" description="Order disappears from Ready column. Plate slot #3 is freed and returns to the available pool — ready for the next order." color="emerald" />
     </div>
   );
 }
