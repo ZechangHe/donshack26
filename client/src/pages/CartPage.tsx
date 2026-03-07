@@ -27,7 +27,11 @@ export default function CartPage() {
 
     const order = await res.json();
     clearCart();
-    navigate(`/order/${order.id}`);
+    // Persist order ID for "My Orders" page
+    const saved: string[] = JSON.parse(localStorage.getItem("greenbite-orders") || "[]");
+    saved.unshift(order.id);
+    localStorage.setItem("greenbite-orders", JSON.stringify(saved));
+    navigate("/my-orders");
   }
 
   if (items.length === 0) {

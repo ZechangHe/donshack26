@@ -1064,6 +1064,139 @@ body {
   line-height: 1.5;
 }
 
+/* ===== My Orders Page ===== */
+.my-orders-page {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.my-orders-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.my-order-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: opacity 0.3s;
+}
+
+.my-order-card.picked-up {
+  opacity: 0.55;
+}
+
+.my-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.my-order-header h3 {
+  font-size: 1.15rem;
+}
+
+.my-order-name {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-order-items {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.my-order-item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.my-order-total {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.my-order-pickup {
+  background: #059669;
+  color: white;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-order-pickup-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  margin-bottom: 0.4rem;
+}
+
+.my-order-pickup-code {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  font-family: monospace;
+}
+
+.my-order-pickup-hint {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+}
+
+.my-order-plate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #eff6ff;
+  border: 1.5px solid #3b82f6;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-order-plate-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.my-order-plate-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e40af;
+}
+
+.my-order-plate-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-left: auto;
+}
+
+.my-order-timeline {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 /* ===== Loading ===== */
 .loading {
   text-align: center;

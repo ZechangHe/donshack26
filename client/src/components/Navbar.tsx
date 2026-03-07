@@ -15,6 +15,7 @@ export default function Navbar() {
         <Link to="/cart">
           Cart {totalItems > 0 && <span className="badge">{totalItems}</span>}
         </Link>
+        <Link to="/my-orders">Orders</Link>
         <Link to="/impact">Impact</Link>
         <Link to="/kitchen" className="kitchen-link">
           Kitchen
