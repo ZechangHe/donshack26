@@ -370,6 +370,39 @@ body {
   color: white;
 }
 
+/* ===== Pickup Code ===== */
+.pickup-code-box {
+  background: var(--color-primary-light);
+  border: 2px dashed var(--color-primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.pickup-code-label {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.pickup-code {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--color-primary-dark);
+  font-family: monospace;
+}
+
+.pickup-code-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-top: 0.5rem;
+}
+
 /* ===== Kitchen Dashboard ===== */
 .kitchen-dashboard h1 {
   font-size: 2rem;
@@ -445,6 +478,39 @@ body {
 
 .order-card-total {
   font-weight: 700;
+}
+
+/* ===== Verify Pickup ===== */
+.verify-pickup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.verify-input {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.verify-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.verify-error {
+  color: var(--color-danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: 100%;
 }
 
 /* ===== Status Badge ===== */

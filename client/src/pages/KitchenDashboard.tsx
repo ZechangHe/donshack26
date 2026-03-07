@@ -42,6 +42,15 @@ export default function KitchenDashboard() {
     });
   }
 
+  async function handleVerifyPickup(orderId: string, pickupCode: string): Promise<boolean> {
+    const res = await fetch(`/api/orders/${orderId}/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pickupCode }),
+    });
+    return res.ok;
+  }
+
   const pending = orders.filter((o) => o.status === "pending");
   const preparing = orders.filter((o) => o.status === "preparing");
   const ready = orders.filter((o) => o.status === "ready");
@@ -53,19 +62,19 @@ export default function KitchenDashboard() {
         <div className="kitchen-column">
           <h2>Pending ({pending.length})</h2>
           {pending.map((o) => (
-            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} />
+            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} onVerifyPickup={handleVerifyPickup} />
           ))}
         </div>
         <div className="kitchen-column">
           <h2>Preparing ({preparing.length})</h2>
           {preparing.map((o) => (
-            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} />
+            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} onVerifyPickup={handleVerifyPickup} />
           ))}
         </div>
         <div className="kitchen-column">
           <h2>Ready ({ready.length})</h2>
           {ready.map((o) => (
-            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} />
+            <OrderCard key={o.id} order={o} onUpdateStatus={handleUpdateStatus} onVerifyPickup={handleVerifyPickup} />
           ))}
         </div>
       </div>

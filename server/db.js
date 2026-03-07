@@ -18,6 +18,15 @@ const menuItems = [
 const orders = [];
 let totalOrdersCount = 0;
 
+function generatePickupCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "";
+  for (let i = 0; i < 6; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
+}
+
 function getMenu() {
   return menuItems.filter((item) => item.available);
 }
@@ -32,6 +41,7 @@ function createOrder(items, studentName) {
     id: uuidv4(),
     orderNumber: totalOrdersCount,
     studentName: studentName || "Anonymous",
+    pickupCode: generatePickupCode(),
     items,
     status: "pending",
     total: items.reduce((sum, item) => sum + item.price * item.quantity, 0),

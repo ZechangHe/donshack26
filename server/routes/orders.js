@@ -31,9 +31,10 @@ router.post("/", (req, res) => {
   res.status(201).json(order);
 });
 
-// Get all orders
+// Get all orders (kitchen view — hide pickup codes)
 router.get("/", (req, res) => {
-  res.json(db.getOrders());
+  const orders = db.getOrders().map(({ pickupCode, ...rest }) => rest);
+  res.json(orders);
 });
 
 // Get order by display number
@@ -68,6 +69,27 @@ router.patch("/:id/status", (req, res) => {
   }
 
   res.json(order);
+});
+
+// Verify pickup code (kitchen scans/enters code to confirm pickup)
+router.post("/:id/verify", (req, res) => {
+  const { pickupCode } = req.body;
+  const order = db.getOrderById(req.params.id);
+  if (!order) return res.status(404).json({ error: "Order not found" });
+
+  if (order.pickupCode !== pickupCode) {
+    return res.status(403).json({ error: "Invalid pickup code" });
+  }
+
+  const updated = db.updateOrderStatus(req.params.id, "picked-up");
+
+  const io = req.app.get("io");
+  if (io) {
+    io.emit("order-updated", updated);
+    io.emit("stats-update", db.getStats());
+  }
+
+  res.json({ verified: true, order: updated });
 });
 
 module.exports = router;

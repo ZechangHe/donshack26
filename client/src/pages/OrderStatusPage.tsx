@@ -54,6 +54,13 @@ export default function OrderStatusPage() {
             </div>
           ))}
         </div>
+        {order.pickupCode && (
+          <div className="pickup-code-box">
+            <p className="pickup-code-label">Your Pickup Code</p>
+            <p className="pickup-code">{order.pickupCode}</p>
+            <p className="pickup-code-hint">Show this code when picking up your order</p>
+          </div>
+        )}
         <h3>{order.studentName}</h3>
         <ul>
           {order.items.map((item) => (
