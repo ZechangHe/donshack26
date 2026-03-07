@@ -1,6 +1,139 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 type Tab = "student" | "kitchen";
+
+/* ── Custom SVG Problem Icons ── */
+const iconProps = { width: 48, height: 48, viewBox: "0 0 48 48", fill: "none", stroke: "#6ee7b7", strokeWidth: 2.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
+function IconEnvironment() {
+  return (
+    <svg {...iconProps}>
+      {/* Globe */}
+      <circle cx="24" cy="24" r="16" />
+      <ellipse cx="24" cy="24" rx="8" ry="16" />
+      <line x1="8" y1="24" x2="40" y2="24" />
+      {/* Thermometer rising */}
+      <line x1="38" y1="8" x2="38" y2="20" stroke="#f87171" strokeWidth="3" />
+      <circle cx="38" cy="22" r="3" fill="#f87171" stroke="#f87171" />
+      <path d="M35 8 L38 4 L41 8" stroke="#f87171" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function IconPaperWaste() {
+  return (
+    <svg {...iconProps}>
+      {/* Tree stump */}
+      <path d="M18 38 L18 28 Q18 24 22 24 L26 24 Q30 24 30 28 L30 38" fill="#92400e" stroke="#92400e" />
+      <ellipse cx="24" cy="24" rx="8" ry="3" fill="#92400e" stroke="#92400e" />
+      {/* Paper sheets flying away */}
+      <rect x="6" y="6" width="10" height="13" rx="1" stroke="#6ee7b7" strokeWidth="2" transform="rotate(-15 11 12)" />
+      <line x1="8" y1="10" x2="14" y2="9" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(-15 11 12)" />
+      <line x1="8" y1="13" x2="14" y2="12" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(-15 11 12)" />
+      <rect x="32" y="4" width="10" height="13" rx="1" stroke="#6ee7b7" strokeWidth="2" transform="rotate(20 37 10)" />
+      <line x1="34" y1="8" x2="40" y2="8" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(20 37 10)" />
+      <line x1="34" y1="11" x2="40" y2="11" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(20 37 10)" />
+    </svg>
+  );
+}
+
+function IconDoubleQueue() {
+  return (
+    <svg {...iconProps}>
+      {/* Queue line 1 - at kiosk */}
+      <circle cx="8" cy="10" r="3" />
+      <circle cx="8" cy="22" r="3" />
+      <circle cx="8" cy="34" r="3" />
+      {/* Queue line 2 - at counter */}
+      <circle cx="28" cy="10" r="3" />
+      <circle cx="28" cy="22" r="3" />
+      <circle cx="28" cy="34" r="3" />
+      {/* Arrow between queues */}
+      <path d="M14 22 L22 22" />
+      <path d="M19 18 L23 22 L19 26" />
+      {/* Kiosk & counter */}
+      <rect x="34" y="6" width="8" height="32" rx="2" strokeWidth="2" />
+      <line x1="34" y1="14" x2="42" y2="14" strokeWidth="1.5" />
+      {/* Clock showing time wasted */}
+      <circle cx="38" cy="10" r="2.5" stroke="#f87171" strokeWidth="1.5" />
+      <path d="M38 8.5 L38 10 L39.5 10" stroke="#f87171" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconOrderTheft() {
+  return (
+    <svg {...iconProps}>
+      {/* Tray */}
+      <path d="M8 28 Q8 24 12 24 L36 24 Q40 24 40 28" strokeWidth="2.5" />
+      <line x1="6" y1="28" x2="42" y2="28" strokeWidth="2.5" />
+      {/* Burger on tray */}
+      <ellipse cx="24" cy="22" rx="8" ry="3" stroke="#fbbf24" strokeWidth="2" />
+      <path d="M16 20 Q16 14 24 14 Q32 14 32 20" stroke="#fbbf24" strokeWidth="2" />
+      {/* Sneaky hand reaching */}
+      <path d="M40 12 Q44 14 42 18 L38 20" stroke="#f87171" strokeWidth="2.5" />
+      <path d="M42 12 L44 10" stroke="#f87171" strokeWidth="2" />
+      <path d="M43 14 L46 13" stroke="#f87171" strokeWidth="2" />
+      {/* Question mark */}
+      <text x="10" y="18" fontSize="14" fontWeight="bold" fill="#f87171" stroke="none">?</text>
+    </svg>
+  );
+}
+
+function IconKitchenChaos() {
+  return (
+    <svg {...iconProps}>
+      {/* Frying pan */}
+      <circle cx="20" cy="24" r="12" strokeWidth="2.5" />
+      <line x1="32" y1="24" x2="44" y2="24" strokeWidth="3" />
+      {/* Fire/steam */}
+      <path d="M14 16 Q12 10 16 8 Q14 12 18 10" stroke="#f87171" strokeWidth="2" fill="none" />
+      <path d="M20 14 Q18 8 22 6 Q20 10 24 8" stroke="#fbbf24" strokeWidth="2" fill="none" />
+      <path d="M26 16 Q24 10 28 8 Q26 12 30 10" stroke="#f87171" strokeWidth="2" fill="none" />
+      {/* Paper tickets flying */}
+      <rect x="36" y="6" width="6" height="8" rx="1" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(25 39 10)" />
+      <rect x="38" y="34" width="6" height="8" rx="1" stroke="#6ee7b7" strokeWidth="1.5" transform="rotate(-15 41 38)" />
+    </svg>
+  );
+}
+
+function IconZeroVisibility() {
+  return (
+    <svg {...iconProps}>
+      {/* Eye shape */}
+      <path d="M6 24 Q24 8 42 24 Q24 40 6 24 Z" strokeWidth="2.5" />
+      {/* Pupil */}
+      <circle cx="24" cy="24" r="6" strokeWidth="2.5" />
+      <circle cx="24" cy="24" r="2" fill="#6ee7b7" stroke="none" />
+      {/* Slash through - blocked */}
+      <line x1="10" y1="10" x2="38" y2="38" stroke="#f87171" strokeWidth="3" />
+      {/* Question marks */}
+      <text x="4" y="14" fontSize="10" fontWeight="bold" fill="#f87171" stroke="none">?</text>
+      <text x="38" y="42" fontSize="10" fontWeight="bold" fill="#f87171" stroke="none">?</text>
+    </svg>
+  );
+}
+
+function IconTrayConfusion() {
+  return (
+    <svg {...iconProps}>
+      {/* Tray 1 */}
+      <rect x="4" y="14" width="16" height="4" rx="2" strokeWidth="2" />
+      <path d="M6 14 L6 10 L18 10 L18 14" strokeWidth="1.5" />
+      {/* Tray 2 */}
+      <rect x="28" y="14" width="16" height="4" rx="2" strokeWidth="2" />
+      <path d="M30 14 L30 10 L42 10 L42 14" strokeWidth="1.5" />
+      {/* Tray 3 */}
+      <rect x="16" y="32" width="16" height="4" rx="2" strokeWidth="2" />
+      <path d="M18 32 L18 28 L30 28 L30 32" strokeWidth="1.5" />
+      {/* Confusion arrows crossing */}
+      <path d="M12 18 Q8 25 20 28" stroke="#f87171" strokeWidth="2" />
+      <path d="M36 18 Q40 25 28 28" stroke="#f87171" strokeWidth="2" />
+      {/* Big question mark */}
+      <text x="19" y="26" fontSize="14" fontWeight="bold" fill="#fbbf24" stroke="none">?</text>
+    </svg>
+  );
+}
 
 export default function AboutPage() {
   const [tab, setTab] = useState<Tab>("student");
@@ -18,43 +151,43 @@ export default function AboutPage() {
         </p>
         <div className="problems-list">
           <ProblemItem
-            icon="🪓"
+            icon={<IconEnvironment />}
             title="Environmental Impact at Scale"
             desc="A cafeteria serving 500 students/day wastes ~1,000 sheets daily. That's 5,000/week, 20,000/month."
             stat="100% paperless operation"
           />
           <ProblemItem
-            icon="🌲"
+            icon={<IconPaperWaste />}
             title="Paper Waste"
             desc="Every order prints 2+ sheets — receipts, order slips, queue tickets. Multiply by hundreds of students daily."
             stat="~2 sheets saved per order"
           />
           <ProblemItem
-            icon="🐌"
+            icon={<IconDoubleQueue />}
             title="Double Queuing"
             desc="Students line up at kiosk machines to place orders, then line up again at the counter to pick up food. Two separate queues per meal — easily 10–15 min wasted during rush hour."
             stat="Order from your phone, skip the kiosk line completely"
           />
           <ProblemItem
-            icon="🥷"
+            icon={<IconOrderTheft />}
             title="Order Theft / Mix-ups"
             desc="Open pickup counters let anyone grab the wrong tray. No verification = lost food and frustrated students."
             stat="3-way visual verification per order"
           />
           <ProblemItem
-            icon="🔥"
+            icon={<IconKitchenChaos />}
             title="Kitchen Chaos"
             desc="Staff juggles paper tickets, shouts across the kitchen, and has no overview of pending orders."
             stat="Real-time 3-column dashboard"
           />
           <ProblemItem
-            icon="🙈"
+            icon={<IconZeroVisibility />}
             title="Zero Visibility for Students"
             desc="Once you order, you have no idea if it's being made, almost ready, or forgotten. You just wait and hope."
             stat="Live status pushed via Socket.io"
           />
           <ProblemItem
-            icon="😵‍💫"
+            icon={<IconTrayConfusion />}
             title="Tray Identification Chaos"
             desc="Which tray is whose? Staff relies on memory or shouting names. Errors multiply during rush hour."
             stat="Auto-assigned reusable plate markers (1–50)"
@@ -118,7 +251,7 @@ export default function AboutPage() {
   );
 }
 
-function ProblemItem({ icon, title, desc, stat }: { icon: string; title: string; desc: string; stat: string }) {
+function ProblemItem({ icon, title, desc, stat }: { icon: ReactNode; title: string; desc: string; stat: string }) {
   return (
     <div className="problem-item">
       <span className="problem-item-icon">{icon}</span>
