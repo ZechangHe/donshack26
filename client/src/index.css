@@ -1442,6 +1442,111 @@ body {
   margin-bottom: 36px;
 }
 
+/* Comparison: Traditional vs GreenBite */
+.landing-compare {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.landing-compare-col {
+  flex: 1;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.landing-compare-old {
+  background: #fef2f2;
+}
+
+.landing-compare-new {
+  background: #f0fdf4;
+}
+
+.landing-compare-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 0 16px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.landing-compare-header {
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 4px;
+}
+
+.landing-compare-emoji {
+  font-size: 1.4rem;
+}
+
+.landing-compare-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.landing-compare-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.landing-compare-step-bad .landing-compare-num {
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.landing-compare-step-good .landing-compare-num {
+  background: #bbf7d0;
+  color: #16a34a;
+}
+
+.landing-compare-result {
+  margin-top: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.landing-compare-result-bad {
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.landing-compare-result-good {
+  background: #bbf7d0;
+  color: #16a34a;
+}
+
 /* Problems grid */
 .landing-problems-grid {
   display: grid;
@@ -1771,6 +1876,19 @@ body {
   .landing-stat-divider {
     width: 60%;
     height: 1px;
+  }
+
+  .landing-compare {
+    flex-direction: column;
+  }
+
+  .landing-compare-vs {
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+
+  .landing-compare-col {
+    padding: 20px 16px;
   }
 
   .landing-problems-grid {

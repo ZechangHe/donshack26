@@ -514,6 +514,45 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Section 2.5: Traditional vs GreenBite Comparison ── */}
+      <section className="landing-section">
+        <h2 className="landing-section-title">Traditional vs GreenBite</h2>
+        <p className="landing-section-sub">See how we transform the entire cafeteria experience.</p>
+        <div className="landing-compare">
+          <div className="landing-compare-col landing-compare-old">
+            <div className="landing-compare-header">
+              <span className="landing-compare-emoji">🏚️</span>
+              Traditional Cafeteria
+            </div>
+            <CompareStep num={1} text="Stand in line at kiosk to order" />
+            <CompareStep num={2} text="Staff writes paper order slip" />
+            <CompareStep num={3} text="Get printed paper receipt" />
+            <CompareStep num={4} text="Wait in 2nd line at counter" />
+            <CompareStep num={5} text="Yell your name, hope order is right" />
+            <CompareStep num={6} text="2+ sheets of paper → trash" />
+            <div className="landing-compare-result landing-compare-result-bad">
+              ❌ Slow, wasteful, error-prone
+            </div>
+          </div>
+          <div className="landing-compare-vs">VS</div>
+          <div className="landing-compare-col landing-compare-new">
+            <div className="landing-compare-header">
+              <span className="landing-compare-emoji">🌱</span>
+              GreenBite
+            </div>
+            <CompareStep num={1} text="Log in & order from your phone" good />
+            <CompareStep num={2} text="Kitchen sees order instantly on screen" good />
+            <CompareStep num={3} text="Get digital pickup code" good />
+            <CompareStep num={4} text="Track status in real-time" good />
+            <CompareStep num={5} text="Show code, grab your tray — verified" good />
+            <CompareStep num={6} text="Zero paper. Zero waste." good />
+            <div className="landing-compare-result landing-compare-result-good">
+              ✅ Fast, paperless, verified
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Section 3: Problems We Solve ── */}
       <section className="landing-section">
         <h2 className="landing-section-title">The Real Problems We Solve</h2>
@@ -784,6 +823,15 @@ function FlowStep({
         </h3>
         <p>{description}</p>
       </div>
+    </div>
+  );
+}
+
+function CompareStep({ num, text, good }: { num: number; text: string; good?: boolean }) {
+  return (
+    <div className={`landing-compare-step ${good ? "landing-compare-step-good" : "landing-compare-step-bad"}`}>
+      <span className="landing-compare-num">{num}</span>
+      <span>{text}</span>
     </div>
   );
 }
