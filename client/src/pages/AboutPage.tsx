@@ -524,11 +524,11 @@ export default function AboutPage() {
               <span className="landing-compare-emoji">🏚️</span>
               Traditional Cafeteria
             </div>
-            <CompareStep num={1} text="Stand in line at kiosk to order" />
-            <CompareStep num={2} text="Staff writes paper order slip" />
-            <CompareStep num={3} text="Get printed paper receipt" />
-            <CompareStep num={4} text="Wait in 2nd line at counter" />
-            <CompareStep num={5} text="Yell your name, hope order is right" />
+            <CompareStep num={1} text="Line up at kiosk machine to order" />
+            <CompareStep num={2} text="Get a printed paper order ticket" />
+            <CompareStep num={3} text="Staff prints another copy at their station" />
+            <CompareStep num={4} text="Staff reads paper ticket, packs food — sometimes misses items" />
+            <CompareStep num={5} text="Wait at counter for staff to yell your number" />
             <CompareStep num={6} text="2+ sheets of paper → trash" />
             <div className="landing-compare-result landing-compare-result-bad">
               ❌ Slow, wasteful, error-prone
