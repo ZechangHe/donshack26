@@ -18,43 +18,43 @@ export default function AboutPage() {
         </p>
         <div className="problems-list">
           <ProblemItem
-            icon="🌍"
+            icon="🪓"
             title="Environmental Impact at Scale"
             desc="A cafeteria serving 500 students/day wastes ~1,000 sheets daily. That's 5,000/week, 20,000/month."
             stat="100% paperless operation"
           />
           <ProblemItem
-            icon="📄"
+            icon="🌲"
             title="Paper Waste"
             desc="Every order prints 2+ sheets — receipts, order slips, queue tickets. Multiply by hundreds of students daily."
             stat="~2 sheets saved per order"
           />
           <ProblemItem
-            icon="🧍‍♂️"
+            icon="🐌"
             title="Double Queuing"
             desc="Students line up at kiosk machines to place orders, then line up again at the counter to pick up food. Two separate queues per meal — easily 10–15 min wasted during rush hour."
             stat="Order from your phone, skip the kiosk line completely"
           />
           <ProblemItem
-            icon="🔓"
+            icon="🥷"
             title="Order Theft / Mix-ups"
             desc="Open pickup counters let anyone grab the wrong tray. No verification = lost food and frustrated students."
             stat="3-way visual verification per order"
           />
           <ProblemItem
-            icon="😵"
+            icon="🔥"
             title="Kitchen Chaos"
             desc="Staff juggles paper tickets, shouts across the kitchen, and has no overview of pending orders."
             stat="Real-time 3-column dashboard"
           />
           <ProblemItem
-            icon="📵"
+            icon="🙈"
             title="Zero Visibility for Students"
             desc="Once you order, you have no idea if it's being made, almost ready, or forgotten. You just wait and hope."
             stat="Live status pushed via Socket.io"
           />
           <ProblemItem
-            icon="🏷️"
+            icon="😵‍💫"
             title="Tray Identification Chaos"
             desc="Which tray is whose? Staff relies on memory or shouting names. Errors multiply during rush hour."
             stat="Auto-assigned reusable plate markers (1–50)"
