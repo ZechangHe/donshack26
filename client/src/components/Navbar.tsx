@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const { totalItems } = useCart();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <nav className="navbar">
@@ -20,6 +23,16 @@ export default function Navbar() {
         <Link to="/kitchen" className="kitchen-link">
           Kitchen
         </Link>
+        {user ? (
+          <span className="navbar-user">
+            Hi {user.name.split(" ")[0]} | <span className="navbar-balance">${user.balance.toFixed(2)}</span>
+            <button className="navbar-logout" onClick={() => { logout(); navigate("/"); }}>
+              Logout
+            </button>
+          </span>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </nav>
   );

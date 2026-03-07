@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import CartItemRow from "../components/CartItem";
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem, clearCart, totalPrice } = useCart();
+  const { user, refreshBalance } = useAuth();
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   async function handleCheckout() {
     if (items.length === 0) return;
     setSubmitting(true);
+    setError("");
 
     const res = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        studentName: name || "Anonymous",
+        studentName: user?.name || name || "Anonymous",
+        username: user?.username,
         items: items.map((i) => ({
           menuItemId: i.menuItem.id,
           quantity: i.quantity,
@@ -25,12 +30,21 @@ export default function CartPage() {
       }),
     });
 
+    if (!res.ok) {
+      const data = await res.json();
+      setError(data.error || "Order failed");
+      setSubmitting(false);
+      return;
+    }
+
     const order = await res.json();
     clearCart();
     // Persist order ID for "My Orders" page
     const saved: string[] = JSON.parse(localStorage.getItem("greenbite-orders") || "[]");
     saved.unshift(order.id);
     localStorage.setItem("greenbite-orders", JSON.stringify(saved));
+    // Refresh balance after successful order
+    if (user) await refreshBalance();
     navigate("/my-orders");
   }
 
@@ -58,13 +72,20 @@ export default function CartPage() {
       </div>
       <div className="cart-summary">
         <h2>Total: ${totalPrice.toFixed(2)}</h2>
-        <input
-          type="text"
-          placeholder="Your name (optional)"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="name-input"
-        />
+        {user ? (
+          <p style={{ marginBottom: "1rem", color: "#059669", fontWeight: 500 }}>
+            Ordering as {user.name}
+          </p>
+        ) : (
+          <input
+            type="text"
+            placeholder="Your name (optional)"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="name-input"
+          />
+        )}
+        {error && <p style={{ color: "#ef4444", marginBottom: "0.75rem" }}>{error}</p>}
         <button
           className="btn btn-primary btn-lg"
           onClick={handleCheckout}

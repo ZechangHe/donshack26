@@ -4,7 +4,7 @@ const db = require("../db");
 
 // Create a new order
 router.post("/", (req, res) => {
-  const { studentName, items } = req.body;
+  const { studentName, items, username } = req.body;
   if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ error: "Items array is required" });
   }
@@ -20,7 +20,16 @@ router.post("/", (req, res) => {
     };
   });
 
-  const order = db.createOrder(resolvedItems, studentName);
+  // Deduct balance if logged in
+  if (username) {
+    const total = resolvedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const newBalance = db.deductBalance(username, total);
+    if (newBalance === null) {
+      return res.status(400).json({ error: "Insufficient balance" });
+    }
+  }
+
+  const order = db.createOrder(resolvedItems, studentName, username);
 
   const io = req.app.get("io");
   if (io) {

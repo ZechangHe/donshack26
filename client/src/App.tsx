@@ -6,6 +6,7 @@ import OrderStatusPage from "./pages/OrderStatusPage";
 import KitchenDashboard from "./pages/KitchenDashboard";
 import ImpactPage from "./pages/ImpactPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
+import LoginPage from "./pages/LoginPage";
 import AboutPage from "./pages/AboutPage";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order/:orderId" element={<OrderStatusPage />} />
           <Route path="/my-orders" element={<MyOrdersPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/kitchen" element={<KitchenDashboard />} />
           <Route path="/impact" element={<ImpactPage />} />
         </Routes>

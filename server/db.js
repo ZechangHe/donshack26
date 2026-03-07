@@ -1,5 +1,29 @@
 const { v4: uuidv4 } = require("uuid");
 
+// ---- Pre-set Student Accounts (demo) ----
+const students = new Map([
+  ["zechang", { username: "zechang", password: "1234", name: "Zechang He", balance: 1000 }],
+  ["gabriel", { username: "gabriel", password: "1234", name: "Gabriel Zubovsky", balance: 1000 }],
+]);
+
+function login(username, password) {
+  const student = students.get(username.toLowerCase());
+  if (!student || student.password !== password) return null;
+  return { username: student.username, name: student.name, balance: student.balance };
+}
+
+function getBalance(username) {
+  const student = students.get(username.toLowerCase());
+  return student ? student.balance : null;
+}
+
+function deductBalance(username, amount) {
+  const student = students.get(username.toLowerCase());
+  if (!student || student.balance < amount) return null;
+  student.balance -= amount;
+  return student.balance;
+}
+
 // ---- Menu Items (seed data) ----
 const menuItems = [
   { id: "1", name: "Grilled Chicken Wrap", description: "Grilled chicken, lettuce, tomato, ranch dressing", price: 8.99, category: "Mains", image: "\ud83c\udf2f", available: true },
@@ -61,12 +85,13 @@ function getMenuItem(id) {
   return menuItems.find((item) => item.id === id);
 }
 
-function createOrder(items, studentName) {
+function createOrder(items, studentName, username) {
   totalOrdersCount++;
   const order = {
     id: uuidv4(),
     orderNumber: totalOrdersCount,
     studentName: studentName || "Anonymous",
+    username: username || null,
     pickupCode: generatePickupCode(),
     items,
     status: "pending",
@@ -114,6 +139,9 @@ function getStats() {
 }
 
 module.exports = {
+  login,
+  getBalance,
+  deductBalance,
   getMenu,
   getMenuItem,
   createOrder,

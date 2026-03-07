@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type { MenuItem } from "../types";
 import MenuItemCard from "../components/MenuItemCard";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function MenuPage() {
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [filter, setFilter] = useState<string>("All");
   const { addItem } = useCart();
+  const { user } = useAuth();
 
   useEffect(() => {
     fetch("/api/menu")
@@ -20,6 +23,15 @@ export default function MenuPage() {
   return (
     <div className="menu-page">
       <h1>Today's Menu</h1>
+      {user ? (
+        <div className="menu-balance-banner">
+          Welcome, {user.name}! Balance: ${user.balance.toFixed(2)}
+        </div>
+      ) : (
+        <p className="menu-login-hint">
+          <Link to="/login">Log in</Link> to see your balance
+        </p>
+      )}
       <div className="category-filters">
         {categories.map((cat) => (
           <button

@@ -7,6 +7,7 @@ const { Server } = require("socket.io");
 const menuRoutes = require("./routes/menu");
 const orderRoutes = require("./routes/orders");
 const statsRoutes = require("./routes/stats");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 const server = http.createServer(app);
@@ -33,6 +34,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/stats", statsRoutes);
+app.use("/api/auth", authRoutes);
 
 // Serve frontend in production
 const clientDist = path.join(__dirname, "..", "client", "dist");
