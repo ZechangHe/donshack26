@@ -13,12 +13,12 @@ function App() {
       <Navbar />
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<MenuPage />} />
+          <Route path="/" element={<AboutPage />} />
+          <Route path="/menu" element={<MenuPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order/:orderId" element={<OrderStatusPage />} />
           <Route path="/kitchen" element={<KitchenDashboard />} />
           <Route path="/impact" element={<ImpactPage />} />
-          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
     </div>

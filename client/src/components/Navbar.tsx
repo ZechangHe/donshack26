@@ -10,12 +10,12 @@ export default function Navbar() {
         GreenBite
       </Link>
       <div className="navbar-links">
-        <Link to="/">Menu</Link>
+        <Link to="/">About</Link>
+        <Link to="/menu">Menu</Link>
         <Link to="/cart">
           Cart {totalItems > 0 && <span className="badge">{totalItems}</span>}
         </Link>
         <Link to="/impact">Impact</Link>
-        <Link to="/about">About</Link>
         <Link to="/kitchen" className="kitchen-link">
           Kitchen
         </Link>
