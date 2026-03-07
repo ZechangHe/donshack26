@@ -18,6 +18,12 @@ export default function AboutPage() {
         </p>
         <div className="problems-list">
           <ProblemItem
+            icon="🌍"
+            title="Environmental Impact at Scale"
+            desc="A cafeteria serving 500 students/day wastes ~1,000 sheets daily. That's 5,000/week, 20,000/month."
+            stat="100% paperless operation"
+          />
+          <ProblemItem
             icon="📄"
             title="Paper Waste"
             desc="Every order prints 2+ sheets — receipts, order slips, queue tickets. Multiply by hundreds of students daily."
@@ -52,12 +58,6 @@ export default function AboutPage() {
             title="Tray Identification Chaos"
             desc="Which tray is whose? Staff relies on memory or shouting names. Errors multiply during rush hour."
             stat="Auto-assigned reusable plate markers (1–50)"
-          />
-          <ProblemItem
-            icon="🌍"
-            title="Environmental Impact at Scale"
-            desc="A cafeteria serving 500 students/day wastes ~1,000 sheets daily. That's 5,000/week, 20,000/month."
-            stat="100% paperless operation"
           />
         </div>
       </div>
