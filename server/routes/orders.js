@@ -46,6 +46,17 @@ router.get("/", (req, res) => {
   res.json(orders);
 });
 
+// Reset all orders (demo only)
+router.delete("/reset", (req, res) => {
+  db.resetOrders();
+  const io = req.app.get("io");
+  if (io) {
+    io.emit("orders-reset");
+    io.emit("stats-update", db.getStats());
+  }
+  res.json({ success: true });
+});
+
 // Get order by display number
 router.get("/number/:orderNumber", (req, res) => {
   const order = db.getOrderByNumber(req.params.orderNumber);

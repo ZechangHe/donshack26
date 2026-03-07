@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import CartItemRow from "../components/CartItem";
@@ -16,6 +16,12 @@ export default function CartPage() {
     if (items.length === 0) return;
     setSubmitting(true);
     setError("");
+
+    if (!user) {
+      setError("Please log in to place an order");
+      setSubmitting(false);
+      return;
+    }
 
     const res = await fetch("/api/orders", {
       method: "POST",
@@ -86,6 +92,11 @@ export default function CartPage() {
           />
         )}
         {error && <p style={{ color: "#ef4444", marginBottom: "0.75rem" }}>{error}</p>}
+        {!user && (
+          <p className="cart-login-hint">
+            <Link to="/login">Log in</Link> to place your order
+          </p>
+        )}
         <button
           className="btn btn-primary btn-lg"
           onClick={handleCheckout}

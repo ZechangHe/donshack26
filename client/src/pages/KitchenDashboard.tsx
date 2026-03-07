@@ -53,12 +53,18 @@ export default function KitchenDashboard() {
       setOrders((prev) => prev.map((o) => (o.id === updated.id ? updated : o)));
     }
 
+    function handleOrdersReset() {
+      setOrders([]);
+    }
+
     socket.on("new-order", handleNew);
     socket.on("order-updated", handleUpdate);
+    socket.on("orders-reset", handleOrdersReset);
 
     return () => {
       socket.off("new-order", handleNew);
       socket.off("order-updated", handleUpdate);
+      socket.off("orders-reset", handleOrdersReset);
     };
   }, [socketRef]);
 
@@ -67,6 +73,12 @@ export default function KitchenDashboard() {
     const interval = setInterval(() => setTick((t) => t + 1), 30000);
     return () => clearInterval(interval);
   }, []);
+
+  async function handleReset() {
+    if (!window.confirm("Reset all orders and balances? This cannot be undone.")) return;
+    await fetch("/api/orders/reset", { method: "DELETE" });
+    setOrders([]);
+  }
 
   async function handleUpdateStatus(orderId: string, status: Order["status"]) {
     await fetch(`/api/orders/${orderId}/status`, {
@@ -82,7 +94,10 @@ export default function KitchenDashboard() {
 
   return (
     <div className="kitchen-dashboard">
-      <h1>Kitchen Dashboard</h1>
+      <div className="kitchen-header">
+        <h1>Kitchen Dashboard</h1>
+        <button className="btn-reset" onClick={handleReset}>Reset All</button>
+      </div>
       <div className="kitchen-columns">
         <div className="kitchen-column">
           <h2>Pending ({pending.length})</h2>

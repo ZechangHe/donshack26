@@ -138,6 +138,15 @@ function getStats() {
   };
 }
 
+function resetOrders() {
+  orders.length = 0;
+  totalOrdersCount = 0;
+  usedPlates.clear();
+  for (const [, student] of students) {
+    student.balance = 1000;
+  }
+}
+
 module.exports = {
   login,
   getBalance,
@@ -151,4 +160,5 @@ module.exports = {
   updateOrderStatus,
   getStats,
   assignNextPlate,
+  resetOrders,
 };

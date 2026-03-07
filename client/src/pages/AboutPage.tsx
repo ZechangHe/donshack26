@@ -137,6 +137,20 @@ function IconTrayConfusion() {
 
 /* ── FlowStep SVG Icons ── */
 
+function IconLogin() {
+  return (
+    <svg {...iconProps}>
+      {/* Person silhouette */}
+      <circle cx="24" cy="14" r="8" />
+      <path d="M10 40 Q10 28 24 28 Q38 28 38 40" strokeWidth="2.5" />
+      {/* Key */}
+      <circle cx="38" cy="14" r="4" stroke="#fbbf24" strokeWidth="2" />
+      <line x1="38" y1="18" x2="38" y2="28" stroke="#fbbf24" strokeWidth="2" />
+      <line x1="38" y1="24" x2="42" y2="24" stroke="#fbbf24" strokeWidth="2" />
+    </svg>
+  );
+}
+
 function IconBrowseMenu() {
   return (
     <svg {...iconProps}>
@@ -695,12 +709,13 @@ function PainCard({ icon, pain, solution }: { icon: ReactNode; pain: string; sol
 function StudentFlow() {
   return (
     <div className="landing-flow">
-      <FlowStep number={1} icon={<IconBrowseMenu />} title="Browse Menu" description="Open GreenBite on your phone. Filter by category: Mains, Sides, Desserts, Drinks. Tap 'Add to Cart' for items you want." color="green" />
-      <FlowStep number={2} icon={<IconReviewCart />} title="Review Cart & Place Order" description="Adjust quantities, enter your name, tap 'Place Order'. System generates your order number and a unique 6-character pickup code." color="green" />
-      <FlowStep number={3} icon={<IconTrackOrder />} title="Track Order in Real-Time" description="Auto-redirected to status page. See live progress: pending → preparing → ready → picked-up. Your pickup code is displayed prominently." color="blue" />
-      <FlowStep number={4} icon={<IconWaitReady />} title="Wait for 'Ready' Status" description="Phone updates automatically via Socket.io — no refresh needed. When ready, you'll also see your assigned plate number." color="blue" />
-      <FlowStep number={5} icon={<IconPickUp />} title="Pick Up Your Food" description="Go to the pickup counter. Find your tray at the plate number slot. Show your pickup code to staff. They verify visually — code match + plate match = yours!" color="emerald" />
-      <FlowStep number={6} icon={<IconDoneZeroPaper />} title="Done! Zero Paper Used" description="Staff marks your order as picked-up. The plate marker returns to the available pool for reuse. No receipts, no paper, just food!" color="emerald" />
+      <FlowStep number={1} icon={<IconLogin />} title="Log In" description="Enter your student username and password. Your meal balance is loaded automatically — no card needed." color="green" />
+      <FlowStep number={2} icon={<IconBrowseMenu />} title="Browse Menu" description="Filter by category: Mains, Sides, Desserts, Drinks. Your balance is shown at the top. Tap 'Add to Cart' for items you want." color="green" />
+      <FlowStep number={3} icon={<IconReviewCart />} title="Review Cart & Place Order" description="Adjust quantities, tap 'Place Order'. Balance is deducted automatically. System generates your order number and a unique 6-character pickup code." color="green" />
+      <FlowStep number={4} icon={<IconTrackOrder />} title="Track Order in Real-Time" description="Check 'My Orders' anytime. See live progress: pending → preparing → ready → picked-up. Your pickup code is displayed prominently." color="blue" />
+      <FlowStep number={5} icon={<IconWaitReady />} title="Wait for 'Ready' Status" description="Order updates automatically via Socket.io — no refresh needed. When ready, you'll also see your assigned plate number." color="blue" />
+      <FlowStep number={6} icon={<IconPickUp />} title="Pick Up Your Food" description="Go to the pickup counter. Find your tray at the plate number slot. Show your pickup code to staff. They verify visually — code match + plate match = yours!" color="emerald" />
+      <FlowStep number={7} icon={<IconDoneZeroPaper />} title="Done! Zero Paper Used" description="Staff marks your order as picked-up. The plate marker returns to the available pool for reuse. No receipts, no paper, just food!" color="emerald" />
     </div>
   );
 }
