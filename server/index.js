@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
 
 const menuRoutes = require("./routes/menu");
@@ -11,7 +12,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.NODE_ENV === "production"
+      ? undefined  // same origin in production
+      : "http://localhost:5173",
     methods: ["GET", "POST", "PATCH"],
   },
 });
@@ -25,13 +28,22 @@ app.use(express.json());
 // Make io accessible in route handlers
 app.set("io", io);
 
-// Routes
+// API Routes
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", app: "GreenBite" });
 });
 app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/stats", statsRoutes);
+
+// Serve frontend in production
+const clientDist = path.join(__dirname, "..", "client", "dist");
+app.use(express.static(clientDist));
+
+// SPA fallback — any non-API route serves index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(clientDist, "index.html"));
+});
 
 // Socket.io
 io.on("connection", (socket) => {
