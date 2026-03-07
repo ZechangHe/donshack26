@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "client",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["/Users/ethanm4/donshack26/.claude/start-client.sh"],
+      "port": 5173
+    }
+  ]
+}

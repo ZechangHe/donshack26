@@ -1,10 +1,14 @@
 {
   "name": "donshack26",
   "version": "1.0.0",
-  "description": "React + Node.js/Express web app",
+  "description": "GreenBite - Paperless Cafeteria Ordering",
   "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
     "install:all": "cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
