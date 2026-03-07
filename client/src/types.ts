@@ -26,6 +26,7 @@ export interface Order {
   studentName: string;
   items: OrderItem[];
   pickupCode?: string;
+  plateNumber?: number;
   status: "pending" | "preparing" | "ready" | "picked-up";
   total: number;
   createdAt: string;

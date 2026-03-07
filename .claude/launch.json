@@ -2,9 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "client",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": ["/Users/ethanm4/donshack26/.claude/start-client.sh"],
+      "name": "greenbite",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 5173
     }
   ]

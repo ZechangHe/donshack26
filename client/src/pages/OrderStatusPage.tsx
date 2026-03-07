@@ -61,6 +61,13 @@ export default function OrderStatusPage() {
             <p className="pickup-code-hint">Show this code when picking up your order</p>
           </div>
         )}
+        {order.plateNumber && (
+          <div className="plate-number-box">
+            <p className="plate-number-label">Your Plate Number</p>
+            <p className="plate-number-big">#{order.plateNumber}</p>
+            <p className="plate-number-hint">Find the tray with this number</p>
+          </div>
+        )}
         <h3>{order.studentName}</h3>
         <ul>
           {order.items.map((item) => (

@@ -31,9 +31,9 @@ router.post("/", (req, res) => {
   res.status(201).json(order);
 });
 
-// Get all orders (kitchen view — hide pickup codes)
+// Get all orders (kitchen view — include pickup codes so staff can label trays)
 router.get("/", (req, res) => {
-  const orders = db.getOrders().map(({ pickupCode, ...rest }) => rest);
+  const orders = db.getOrders();
   res.json(orders);
 });
 
@@ -52,6 +52,8 @@ router.get("/:id", (req, res) => {
 });
 
 // Update order status
+// If pending → ready, auto-transition through "preparing" first
+// Auto-assigns next plate number (1→2→...→50→1→...) when marking ready
 router.patch("/:id/status", (req, res) => {
   const { status } = req.body;
   const validStatuses = ["pending", "preparing", "ready", "picked-up"];
@@ -59,10 +61,36 @@ router.patch("/:id/status", (req, res) => {
     return res.status(400).json({ error: "Invalid status" });
   }
 
-  const order = db.updateOrderStatus(req.params.id, status);
-  if (!order) return res.status(404).json({ error: "Order not found" });
+  const current = db.getOrderById(req.params.id);
+  if (!current) return res.status(404).json({ error: "Order not found" });
 
   const io = req.app.get("io");
+
+  // Auto-transition: pending → preparing → ready (with auto plate assignment)
+  if (current.status === "pending" && status === "ready") {
+    const preparing = db.updateOrderStatus(req.params.id, "preparing");
+    if (io) {
+      io.emit("order-updated", preparing);
+    }
+    // Brief delay so student sees "preparing" before "ready"
+    setTimeout(() => {
+      db.assignNextPlate(req.params.id);
+      const ready = db.updateOrderStatus(req.params.id, "ready");
+      if (io) {
+        io.emit("order-updated", ready);
+        io.emit("stats-update", db.getStats());
+      }
+    }, 1500);
+    res.json(preparing);
+    return;
+  }
+
+  // If marking ready from preparing, also auto-assign plate
+  if (status === "ready" && !current.plateNumber) {
+    db.assignNextPlate(req.params.id);
+  }
+
+  const order = db.updateOrderStatus(req.params.id, status);
   if (io) {
     io.emit("order-updated", order);
     io.emit("stats-update", db.getStats());

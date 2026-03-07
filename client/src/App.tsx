@@ -5,6 +5,7 @@ import CartPage from "./pages/CartPage";
 import OrderStatusPage from "./pages/OrderStatusPage";
 import KitchenDashboard from "./pages/KitchenDashboard";
 import ImpactPage from "./pages/ImpactPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/order/:orderId" element={<OrderStatusPage />} />
           <Route path="/kitchen" element={<KitchenDashboard />} />
           <Route path="/impact" element={<ImpactPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
     </div>

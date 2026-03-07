@@ -14,6 +14,32 @@ const menuItems = [
   { id: "10", name: "Berry Smoothie", description: "Blueberry, strawberry, banana, yogurt", price: 5.49, category: "Drinks", image: "\ud83e\uded0", available: true },
 ];
 
+// ---- Reusable Plate Slots (1–50) ----
+// Each plate number = a physical slot on the pickup counter
+// When picked up → slot frees up → system reuses it for new orders
+const TOTAL_PLATES = 50;
+const usedPlates = new Set();
+
+function assignNextPlate(orderId) {
+  const order = orders.find((o) => o.id === orderId);
+  if (!order) return null;
+  // Find the lowest available plate number
+  for (let i = 1; i <= TOTAL_PLATES; i++) {
+    if (!usedPlates.has(i)) {
+      usedPlates.add(i);
+      order.plateNumber = i;
+      return order;
+    }
+  }
+  // All 50 slots full (very unlikely) — assign without tracking
+  order.plateNumber = null;
+  return order;
+}
+
+function releasePlate(plateNumber) {
+  usedPlates.delete(plateNumber);
+}
+
 // ---- Orders ----
 const orders = [];
 let totalOrdersCount = 0;
@@ -67,6 +93,10 @@ function getOrderByNumber(orderNumber) {
 function updateOrderStatus(id, status) {
   const order = orders.find((o) => o.id === id);
   if (!order) return null;
+  // Release plate slot when order is picked up
+  if (status === "picked-up" && order.plateNumber) {
+    releasePlate(order.plateNumber);
+  }
   order.status = status;
   order.updatedAt = new Date().toISOString();
   return order;
@@ -92,4 +122,5 @@ module.exports = {
   getOrderByNumber,
   updateOrderStatus,
   getStats,
+  assignNextPlate,
 };
