@@ -135,6 +135,46 @@ function IconTrayConfusion() {
   );
 }
 
+function IconStaffYelling() {
+  return (
+    <svg {...iconProps}>
+      {/* Person */}
+      <circle cx="16" cy="12" r="6" />
+      <path d="M16 18 L16 34" strokeWidth="2.5" />
+      <path d="M8 26 L16 20 L24 26" strokeWidth="2" />
+      {/* Megaphone / yelling */}
+      <path d="M22 14 L30 8 L30 20 L22 14" stroke="#f87171" strokeWidth="2" />
+      <path d="M34 8 Q40 14 34 20" stroke="#f87171" strokeWidth="2" />
+      <path d="M37 5 Q44 14 37 23" stroke="#f87171" strokeWidth="1.5" />
+      {/* Clock showing wasted time */}
+      <circle cx="38" cy="36" r="8" stroke="#fbbf24" strokeWidth="2" />
+      <path d="M38 32 L38 36 L42 38" stroke="#fbbf24" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function IconDigitalTrust() {
+  return (
+    <svg {...iconProps}>
+      {/* Phone with screenshot */}
+      <rect x="6" y="8" width="16" height="28" rx="3" />
+      <line x1="6" y1="12" x2="22" y2="12" strokeWidth="1.5" />
+      <line x1="6" y1="32" x2="22" y2="32" strokeWidth="1.5" />
+      {/* Fake copy arrow */}
+      <path d="M24 20 L30 20" stroke="#f87171" strokeWidth="2" />
+      <path d="M28 17 L31 20 L28 23" stroke="#f87171" strokeWidth="2" />
+      {/* Second phone (fake) */}
+      <rect x="32" y="8" width="12" height="28" rx="3" stroke="#f87171" strokeWidth="2" />
+      <line x1="32" y1="12" x2="44" y2="12" stroke="#f87171" strokeWidth="1.5" />
+      {/* X mark on fake */}
+      <path d="M35 20 L41 26 M41 20 L35 26" stroke="#f87171" strokeWidth="2.5" />
+      {/* Shield checkmark */}
+      <path d="M14 16 L14 24 Q14 28 10 28" stroke="#6ee7b7" strokeWidth="1.5" />
+      <path d="M10 22 L13 25 L18 18" stroke="#6ee7b7" strokeWidth="2" />
+    </svg>
+  );
+}
+
 /* ── FlowStep SVG Icons ── */
 
 function IconLogin() {
@@ -541,12 +581,12 @@ export default function AboutPage() {
               <span className="landing-compare-emoji">🌱</span>
               GreenBite
             </div>
-            <CompareStep num={1} text="Log in & order from your phone" good />
+            <CompareStep num={1} text="Order from your phone — anywhere on campus" good />
             <CompareStep num={2} text="Kitchen sees order instantly on screen" good />
-            <CompareStep num={3} text="Get digital pickup code" good />
-            <CompareStep num={4} text="Track status in real-time" good />
-            <CompareStep num={5} text="Show code, grab your tray — verified" good />
-            <CompareStep num={6} text="Zero paper. Zero waste." good />
+            <CompareStep num={3} text="Get a unique 6-char pickup code (can't be faked)" good />
+            <CompareStep num={4} text="Track status in real-time — come only when ready" good />
+            <CompareStep num={5} text="Show code, grab your tray — verified, no yelling" good />
+            <CompareStep num={6} text="Zero paper. Zero waste. Everyone stays productive." good />
             <div className="landing-compare-result landing-compare-result-good">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}><circle cx="10" cy="10" r="10" fill="#059669"/><path d="M6 10 L9 13 L14 7" stroke="#fff" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
               Fast, paperless, verified
@@ -595,6 +635,18 @@ export default function AboutPage() {
             title="Duplicate Work Between Cooks"
             desc="Two cooks see the same order and both start making it. No way to 'claim' an order — wasted food, wasted time."
             stat="Claim-to-cook: tap 'Start Preparing' to reserve"
+          />
+          <ProblemItem
+            icon={<IconStaffYelling />}
+            title="Staff Stuck Yelling Numbers"
+            desc="A worker finishes food, then stands at the counter shouting 'Number 29!' — sometimes no one comes. That worker is stuck doing nothing while the kitchen is slammed."
+            stat="Phone notification replaces yelling — students come only when ready"
+          />
+          <ProblemItem
+            icon={<IconDigitalTrust />}
+            title="Digital Systems Can Be Faked"
+            desc="Why not go digital? Because students could screenshot, photoshop, or reuse someone else's order confirmation. Cafeterias don't trust digital receipts."
+            stat="Random 6-char pickup code — verified in real-time, can't be faked or reused"
           />
           <ProblemItem
             icon={<IconZeroVisibility />}
@@ -670,6 +722,16 @@ export default function AboutPage() {
             pain="Duplicate cook work"
             solution="'Start Preparing' button claims the order. Other staff see it's taken — no wasted food."
           />
+          <PainCard
+            icon={<IconStaffYelling />}
+            pain="Staff stuck yelling"
+            solution="No more shouting numbers. Students get notified on their phone and only come when food is ready."
+          />
+          <PainCard
+            icon={<IconDigitalTrust />}
+            pain="Fake digital receipts"
+            solution="Random 6-char code generated per order, verified in real-time. Screenshots are useless — code status is checked live."
+          />
         </div>
       </section>
 
@@ -707,6 +769,22 @@ export default function AboutPage() {
             </div>
             <h3>Zero waste</h3>
             <p>No paper, no plastic markers — fully reusable system from order to pickup.</p>
+          </div>
+          <div className="landing-tech-card">
+            <div className="landing-tech-icon">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {/* Bar chart */}
+                <rect x="8" y="28" width="6" height="14" rx="1" />
+                <rect x="18" y="18" width="6" height="24" rx="1" />
+                <rect x="28" y="10" width="6" height="32" rx="1" />
+                <rect x="38" y="22" width="6" height="20" rx="1" />
+                {/* Trend line */}
+                <path d="M10 26 L20 16 L30 8 L40 14" strokeWidth="2" />
+                <circle cx="40" cy="14" r="2" fill="#059669" />
+              </svg>
+            </div>
+            <h3>Data-driven</h3>
+            <p>Track popular items, peak hours, and ordering patterns — optimize staffing and inventory.</p>
           </div>
         </div>
       </section>
