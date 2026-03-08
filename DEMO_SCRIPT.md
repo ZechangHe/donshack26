@@ -6,13 +6,29 @@
 
 ---
 
-## Setup Before Demo
+## Pre-Demo Warmup (10 min before your slot)
+
+Render free tier puts the server to sleep after inactivity. First visit can take **30–60 seconds** to wake up. Do this early so it's instant during the demo.
+
+1. **Open your deployed URL** in any browser tab (e.g. `https://your-app.onrender.com`)
+2. **Wait for the page to fully load** — you'll see the About page with the hero section
+3. **Click around** — visit `/menu`, `/kitchen`, `/impact` to make sure all API calls work
+4. **Test a quick order** — log in as `zechang / 1234`, add one item, place order, check it appears on `/kitchen`
+5. **Reset** — go to `/kitchen` and click **"Reset All"** to clear the test order and reset balances
+6. **Keep a tab open** — don't close the browser. This keeps the server awake until your demo
+
+> **If the site is still slow after 60 seconds:** The server might be redeploying. Check Render dashboard for deploy status. Worst case, you can present from the About page alone — it has all the content.
+
+---
+
+## Setup Before Demo (2 min before)
 
 1. Open Chrome with **two windows side by side** on the projector screen
 2. **Left window** = Student view (start on About page `/`)
 3. **Right window** = Kitchen view (`/kitchen`)
 4. Make sure kitchen dashboard is empty (click "Reset All" if needed)
 5. Log out of any existing session
+6. Clear localStorage in both windows (`F12 → Application → Local Storage → Clear`) to remove old order history
 
 ---
 
