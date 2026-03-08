@@ -2,7 +2,7 @@
 
 **Team:** Zechang He & Gabriel Zubovsky
 **Theme:** Environment
-**Duration:** ~3–4 minutes
+**Duration:** ~4 minutes
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## Demo Flow
 
-### PART 1 — The Problem (30 sec)
+### PART 1 — The Problem (45 sec)
 
 > **Screen:** Left window on About page (hero section visible)
 
@@ -33,7 +33,11 @@
 >
 > On top of that, students waste 10 to 15 minutes standing in two separate lines — one to order, one to pick up. Orders get stolen, trays get mixed up, and the kitchen is drowning in paper tickets.
 >
-> GreenBite fixes all of that."
+> And here's something people don't think about — **staff waste time yelling order numbers**. At our cafeteria, a worker finishes making food, then stands at the counter shouting 'Number 29!' over and over. Sometimes no one comes — the student is still in class, or didn't hear. That worker is **stuck doing nothing productive** while the kitchen is slammed with orders.
+>
+> So why not go digital? Because cafeterias **don't trust it**. A student could screenshot someone else's order, photoshop a confirmation, or reuse the same receipt twice. Paper feels safe.
+>
+> GreenBite fixes **all** of this — the paper waste, the yelling, and the trust problem."
 
 ---
 
@@ -137,13 +141,15 @@
 
 **Say:**
 
-> "When the food is done, they mark it as Ready. The system automatically assigns a **plate number** — that's a physical slot on the pickup counter. The student's phone updates instantly."
+> "When the food is done, they mark it as Ready. The system automatically assigns a **plate number** — that's a physical slot on the pickup counter, numbered 1 to 50. The student's phone updates instantly.
+>
+> And here's the key — **no one has to yell 'Number 29!'** anymore. The student's phone tells them exactly when their food is ready and which slot to pick it up from. They only walk to the counter **when they know it's done**. So the pickup line moves fast — because everyone who's there already has food waiting."
 
 > **Do:** Point to Left window — show that the My Orders page now shows "ready" status and plate number
 
 **Say:**
 
-> "See? The student's screen updated in real time — they can see their plate number and pickup code. No more guessing, no more stolen orders."
+> "See? The student's screen updated in real time — plate number and pickup code. No more guessing, no more stolen orders. And your front-of-house staff? Instead of one person stuck yelling numbers, **any staff member** can quickly verify a pickup code when a student arrives. Everyone stays productive."
 
 ---
 
@@ -151,7 +157,7 @@
 
 **Say:**
 
-> "When the student picks up their food, the kitchen verifies the pickup code, marks it as picked up, and the plate slot is freed for the next order. The whole cycle is **100% paperless**."
+> "When the student picks up their food, the kitchen verifies the pickup code, marks it as picked up, and the plate slot is **freed and recycled** for the next order — slot 1 through 50, cycling forever. The whole process is **100% paperless**."
 
 ---
 
@@ -183,16 +189,16 @@
 
 | Timing | Section | Screen Action |
 |--------|---------|---------------|
-| 0:00 | Problem | Left: About page hero |
-| 0:30 | Comparison | Left: Scroll to Traditional vs GreenBite |
-| 0:50 | Student Login | Left: Login page → Menu |
-| 1:00 | Student Order | Left: Menu → Cart → Place Order |
-| 1:30 | Order Placed | Left: My Orders (show code) → Point to Right |
-| 2:00 | Kitchen Flow | Right: Pending → Preparing → Ready |
-| 2:30 | Pickup | Right: Mark Picked Up → Left: status updated |
-| 3:00 | Impact | Left: Impact page |
-| 3:20 | Wrap Up | Speaking, no clicks |
-| 3:40 | Done! | |
+| 0:00 | Problem + Why Not Digital | Left: About page hero |
+| 0:45 | Comparison | Left: Scroll to Traditional vs GreenBite |
+| 1:05 | Student Login | Left: Login page → Menu |
+| 1:15 | Student Order | Left: Menu → Cart → Place Order |
+| 1:45 | Order Placed | Left: My Orders (show code) → Point to Right |
+| 2:15 | Kitchen Flow | Right: Pending → Preparing → Ready |
+| 2:50 | Pickup + Staff Efficiency | Right: Mark Picked Up → Left: status updated |
+| 3:20 | Impact | Left: Impact page |
+| 3:40 | Wrap Up | Speaking, no clicks |
+| 4:00 | Done! | |
 
 ## Emergency Notes
 
