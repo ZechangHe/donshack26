@@ -665,7 +665,7 @@ export default function AboutPage() {
 
       {/* ── Section 4: How It Works ── */}
       <section className="landing-section landing-section-gray">
-        <h2 className="landing-section-title">How It Works</h2>
+        <h2 className="landing-section-title">How It Works — End to End</h2>
         <div className="landing-tabs">
           <button
             className={`landing-tab ${tab === "student" ? "landing-tab-active" : ""}`}

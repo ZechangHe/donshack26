@@ -2068,14 +2068,39 @@ body {
 
 /* Menu balance banner */
 .menu-balance-banner {
-  background: #ecfdf5;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
   border: 1px solid #a7f3d0;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.menu-balance-greeting {
+  color: #065f46;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.menu-balance-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.menu-balance-amount {
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #059669;
+  line-height: 1;
+}
+.menu-balance-label {
+  font-size: 0.75rem;
+  color: #6b7280;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .menu-login-hint {

@@ -97,7 +97,13 @@
 
 > "Here's my cart. Total is $11.98. I'm logged in, so my balance will be deducted automatically when I place the order."
 
-> **Do:** Click **"Place Order"**
+> **Do:** Click **"Place Order"** → a confirmation popup appears
+
+**Say:**
+
+> "Notice we added a confirmation step — so students don't accidentally place an order. Let me confirm."
+
+> **Do:** Click **"Confirm Order"** in the popup
 
 **Say:**
 

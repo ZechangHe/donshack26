@@ -25,7 +25,11 @@ export default function MenuPage() {
       <h1>Today's Menu</h1>
       {user ? (
         <div className="menu-balance-banner">
-          Welcome, {user.name}! Balance: ${user.balance.toFixed(2)}
+          <span className="menu-balance-greeting">Welcome back, {user.name}</span>
+          <div className="menu-balance-box">
+            <span className="menu-balance-amount">${user.balance.toFixed(2)}</span>
+            <span className="menu-balance-label">Available Balance</span>
+          </div>
         </div>
       ) : (
         <p className="menu-login-hint">
