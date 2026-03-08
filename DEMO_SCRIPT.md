@@ -97,7 +97,9 @@
 
 **Say:**
 
-> "Order placed! Now watch two things..."
+> "Order placed! And remember — students can place orders from **anywhere on campus** — their dorm, their classroom — and just pick up when it's ready. No need to stand in a cafeteria line. This also makes the system more **inclusive** — students with mobility challenges don't have to wait in long lines.
+>
+> Now watch two things..."
 
 ---
 
@@ -129,7 +131,7 @@
 
 **Say:**
 
-> "A cook clicks 'Start Preparing' to **claim** this order. It moves to the Preparing column. This prevents two cooks from accidentally making the same thing."
+> "A cook clicks 'Start Preparing' to **claim** this order. It moves to the Preparing column. This prevents two cooks from accidentally making the same thing — and it also **prevents food waste**, because no one accidentally makes a duplicate order."
 
 > **Do:** Click **"Mark as Ready"** on the order card
 
@@ -170,6 +172,8 @@
 > "GreenBite is built with **React**, **Node.js**, and **Socket.io** for real-time updates. Everything runs in the browser — no app download needed.
 >
 > We eliminate paper waste, cut wait times in half, prevent order theft, and give students real-time visibility into their food.
+>
+> Looking ahead, the data we collect opens up powerful possibilities — cafeteria managers could see **which items are most popular, identify peak hours, and optimize staffing and inventory** based on real ordering data.
 >
 > Zero paper. Zero queues. Just food. Thank you!"
 
