@@ -531,7 +531,8 @@ export default function AboutPage() {
             <CompareStep num={5} text="Wait at counter for staff to yell your number" />
             <CompareStep num={6} text="2+ sheets of paper → trash" />
             <div className="landing-compare-result landing-compare-result-bad">
-              ❌ Slow, wasteful, error-prone
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}><circle cx="10" cy="10" r="10" fill="#dc2626"/><path d="M7 7 L13 13 M13 7 L7 13" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              Slow, wasteful, error-prone
             </div>
           </div>
           <div className="landing-compare-vs">VS</div>
@@ -547,7 +548,8 @@ export default function AboutPage() {
             <CompareStep num={5} text="Show code, grab your tray — verified" good />
             <CompareStep num={6} text="Zero paper. Zero waste." good />
             <div className="landing-compare-result landing-compare-result-good">
-              ✅ Fast, paperless, verified
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}><circle cx="10" cy="10" r="10" fill="#059669"/><path d="M6 10 L9 13 L14 7" stroke="#fff" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Fast, paperless, verified
             </div>
           </div>
         </div>
