@@ -195,3 +195,129 @@
 - **If balance error:** Click "Reset All" on kitchen dashboard — this resets all orders AND resets balances to $1,000
 - **If something breaks:** The About page works offline and has all the content — you can present from there
 - **Demo accounts:** zechang / 1234, gabriel / 1234
+
+---
+
+## Technical Deep Dive (Backup / Q&A Reference)
+
+Use this section if judges ask about the tech, or just for learning.
+
+### Architecture Overview
+
+```
+┌─────────────────┐         ┌─────────────────┐
+│   React + Vite   │ ◄─────► │  Node.js/Express │
+│   (Frontend)     │   API   │   (Backend)      │
+│   Port 5173      │         │   Port 5001      │
+└────────┬────────┘         └────────┬────────┘
+         │                           │
+         │      Socket.io            │
+         │◄─────────────────────────►│
+         │   (WebSocket, real-time)  │
+         │                           │
+                              ┌──────┴──────┐
+                              │  In-Memory   │
+                              │  Data Store  │
+                              │  (Maps)      │
+                              └─────────────┘
+```
+
+### Tech Stack
+
+| Layer | Technology | Why We Chose It |
+|-------|-----------|----------------|
+| Frontend | React 18 + TypeScript | Component-based UI, type safety |
+| Bundler | Vite | Fast HMR, instant dev server startup |
+| Backend | Express 5 (Node.js) | Lightweight, easy REST API |
+| Real-time | Socket.io | Bi-directional WebSocket — instant order updates without page refresh |
+| State | React Context API | Simple global state (Auth, Cart) without Redux overhead |
+| Persistence | localStorage | Client-side order history survives page refresh |
+| Data Store | In-memory Maps | No database setup needed, fast reads, perfect for demo |
+| Deployment | Render | Auto-deploy from GitHub on every push to main |
+
+### Key Technical Decisions
+
+**1. Why Socket.io instead of polling?**
+- Polling = client asks server every X seconds "any updates?" → wasteful, delayed
+- Socket.io = server pushes to client instantly when something changes → real-time
+- Events we emit: `new-order`, `order-updated`, `orders-reset`, `stats-update`
+
+**2. Why in-memory data instead of a database?**
+- Hackathon scope: no need for persistence across server restarts
+- Maps are O(1) lookup — faster than any DB query
+- Reset button clears everything instantly for demo reruns
+- Trade-off: data is lost on server restart (acceptable for demo)
+
+**3. How does the plate number system work?**
+```
+Available pool: [1, 2, 3, ..., 50]
+Order marked "ready" → assign lowest available number (e.g., #3)
+Order marked "picked-up" → #3 returns to the pool
+→ Reusable, no physical waste, auto-managed
+```
+
+**4. How does the 3-way verification work?**
+```
+Student phone shows:  Pickup Code AX7K2M + Plate #3
+Kitchen screen shows: Pickup Code AX7K2M + Plate #3
+Physical counter has:  Tray at Slot #3
+
+Staff checks: all 3 match → hand over food
+→ Prevents theft, eliminates mix-ups
+```
+
+**5. How does real-time update flow?**
+```
+1. Student clicks "Place Order"
+   → POST /api/orders → server creates order
+   → server emits socket "new-order" to ALL connected clients
+
+2. Kitchen clicks "Start Preparing"
+   → PATCH /api/orders/:id → server updates status
+   → server emits "order-updated" to ALL clients
+   → Student's My Orders page updates instantly (no refresh)
+
+3. Same pattern for "Mark Ready" and "Mark Picked Up"
+```
+
+### File Structure
+
+```
+donshack26/
+├── server/
+│   ├── index.js          # Express + Socket.io setup, serves static build
+│   ├── db.js             # In-memory data: orders Map, students Map, menu, plates
+│   └── routes/
+│       ├── orders.js     # CRUD for orders + status transitions + reset
+│       ├── menu.js       # GET menu items
+│       └── auth.js       # Login + balance check
+│
+├── client/src/
+│   ├── main.tsx          # App entry, providers (Auth, Cart)
+│   ├── App.tsx           # React Router routes
+│   ├── index.css         # All styles (single file, ~1800 lines)
+│   ├── context/
+│   │   ├── AuthContext.tsx   # Login state + balance, persists in localStorage
+│   │   └── CartContext.tsx   # Shopping cart state
+│   ├── pages/
+│   │   ├── AboutPage.tsx     # Landing page: problems, flows, comparison
+│   │   ├── MenuPage.tsx      # Menu grid with category filters
+│   │   ├── CartPage.tsx      # Cart review + confirm popup + checkout
+│   │   ├── LoginPage.tsx     # Username/password form
+│   │   ├── MyOrdersPage.tsx  # Order history with live status tracking
+│   │   ├── KitchenDashboard.tsx  # 3-column board + reset button
+│   │   ├── ImpactPage.tsx    # Environmental stats (papers saved, trees)
+│   │   └── OrderConfirmation.tsx # Single order detail view
+│   └── components/
+│       ├── Navbar.tsx        # Nav links + user info + balance
+│       └── OrderCard.tsx     # Kitchen order card with action buttons
+```
+
+### Concepts Gabriel Can Explore Further
+
+- **WebSockets vs HTTP**: How Socket.io upgrades from HTTP long-polling to WebSocket
+- **React Context vs Redux**: When simple Context is enough vs when you need Redux
+- **REST API design**: How our routes follow REST conventions (GET, POST, PATCH, DELETE)
+- **Component composition**: How we break UI into reusable pieces (FlowStep, ProblemItem, CompareStep)
+- **CSS architecture**: Single-file approach vs CSS Modules vs Tailwind — trade-offs
+- **Deployment pipeline**: GitHub → Render auto-deploy → static build served by Express
