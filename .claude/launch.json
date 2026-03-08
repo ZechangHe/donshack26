@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "greenbite",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 5173
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--prefix", "/Users/ethanm4/donshack26/client", "vite", "--port", "5174"],
+      "port": 5174
     }
   ]
 }

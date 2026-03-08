@@ -5,12 +5,15 @@ import { useAuth } from "../context/AuthContext";
 import CartItemRow from "../components/CartItem";
 
 export default function CartPage() {
-  const { items, updateQuantity, removeItem, clearCart, totalPrice } = useCart();
+  const { items, updateQuantity, removeItem, clearCart, totalPrice, totalItems } = useCart();
   const { user, refreshBalance } = useAuth();
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [showConfirm, setShowConfirm] = useState(false);
   const navigate = useNavigate();
+
+  const overLimit = totalItems > 10;
 
   async function handleCheckout() {
     if (items.length === 0) return;
@@ -99,13 +102,44 @@ export default function CartPage() {
         )}
         <button
           className="btn btn-primary btn-lg"
-          onClick={handleCheckout}
-          disabled={submitting}
+          onClick={() => setShowConfirm(true)}
+          disabled={submitting || overLimit}
         >
           {submitting ? "Placing Order..." : "Place Order"}
         </button>
+        {overLimit && (
+          <p style={{ color: "#ef4444", marginTop: "0.5rem", fontWeight: 500 }}>
+            Maximum 10 items per order
+          </p>
+        )}
         <p className="paper-note">Paperless order — no receipt printed!</p>
       </div>
+
+      {showConfirm && (
+        <div className="confirm-overlay" onClick={() => setShowConfirm(false)}>
+          <div className="confirm-card" onClick={(e) => e.stopPropagation()}>
+            <h3>Confirm Your Order</h3>
+            <p>
+              You're ordering {totalItems} item{totalItems !== 1 ? "s" : ""} for ${totalPrice.toFixed(2)}.
+              This will be deducted from your balance.
+            </p>
+            <div className="confirm-buttons">
+              <button className="confirm-btn-cancel" onClick={() => setShowConfirm(false)}>
+                Cancel
+              </button>
+              <button
+                className="confirm-btn-confirm"
+                onClick={() => {
+                  setShowConfirm(false);
+                  handleCheckout();
+                }}
+              >
+                Confirm Order
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { useAuth } from "../context/AuthContext";
 export default function MenuPage() {
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [filter, setFilter] = useState<string>("All");
-  const { addItem } = useCart();
+  const { addItem, totalItems } = useCart();
   const { user } = useAuth();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function MenuPage() {
       </div>
       <div className="menu-grid">
         {filtered.map((item) => (
-          <MenuItemCard key={item.id} item={item} onAdd={addItem} />
+          <MenuItemCard key={item.id} item={item} onAdd={addItem} cartFull={totalItems >= 10} />
         ))}
       </div>
     </div>
