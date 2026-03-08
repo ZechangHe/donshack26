@@ -792,8 +792,8 @@ export default function AboutPage() {
       {/* ── Section 7: CTA Footer ── */}
       <section className="landing-cta-footer">
         <h2>Ready to go paperless?</h2>
-        <p>Try GreenBite now — no account needed.</p>
-        <a href="/menu" className="landing-btn landing-btn-white">Start Ordering →</a>
+        <p>Try GreenBite now — sign up in seconds.</p>
+        <a href="/login" className="landing-btn landing-btn-white">Start Ordering →</a>
       </section>
     </div>
   );
