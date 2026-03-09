@@ -121,6 +121,18 @@ So that's the full picture. What started as a hackathon project to save paper tu
 - **Data-driven** — order history helps optimize the menu and reduce waste
 - **Never gets stuck** — overflow queue and timeout handle edge cases
 
+### What I Learned
+
+This hackathon taught me something I didn't expect. I went in thinking I was just building a piece of software. But what I actually learned is that solving even a **small, everyday problem** — like ordering food in a cafeteria — requires an incredible amount of thinking.
+
+Every time I thought the design was complete, I'd walk through the entire workflow again and discover **another problem**. Multiple staff sharing one screen? That's a problem. Students not picking up on time? That's a problem. All 50 slots full? That's a problem. And for each one, I'd think through multiple solutions, compare trade-offs, and pick the best approach. Then I'd review the whole flow again — and find **yet another problem**.
+
+It was like peeling an onion. Layer after layer. But honestly, I really enjoyed this process. It trained me to think like a **product designer**, not just a programmer. Writing code is only part of the job — the harder part is figuring out **what** to build and **why**.
+
+I also want to be honest about one thing. At the hackathon, I noticed that many of the other projects — some of which placed higher than ours — were more concept-driven. Some were games, some were mostly AI API calls. I'm not saying those are bad ideas, but I personally don't think a game truly helps the environment, and I don't think calling an AI to generate something is the same as solving a real problem — in fact, all those API calls are burning energy and generating carbon.
+
+I don't mean to say my project is better than theirs. We probably just had **different starting points**. They started from "what's cool to build," and I started from "what's broken that I can fix." I think both approaches are valid, but this experience showed me that I prefer starting from **real problems** — and I think that's the kind of engineering that makes a difference.
+
 I think this is what the future of campus dining could look like — everything digital, easy, and efficient. Thanks for watching, Professor!
 
 ---
