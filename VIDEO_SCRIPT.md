@@ -39,11 +39,17 @@ I built a web app to demo this. Here's how it works:
 
 ### The Pickup System
 
+Now, this is **not** like a restaurant where you scan a QR code at your table and a waiter brings food to you. This is a **school cafeteria** — there are no table numbers, no waiters. Students **walk up to the counter and pick up their own food**. That's a completely different problem to solve.
+
 Here's the pickup flow I designed:
 
-We have **50 numbered slots** on the pickup counter — slot 1 through 50. When an order is marked "Ready," the system assigns the **lowest available slot number**. So if slot 1 is taken, the next order gets slot 2, and so on. When a student picks up from slot 1, that slot is freed up and recycled. So when order 51 comes in, it goes to slot 1 again. The 50 slots cycle forever — we never run out.
+We have a **physical pickup shelf with 50 numbered slots** — think of it like a wall of cubbies, labeled 1 through 50. When the kitchen finishes an order and marks it "Ready," the system assigns the **lowest available slot number**. The staff puts the packed food into that slot. So if slot 1 is taken, the next order gets slot 2, and so on.
+
+The student's phone tells them: "Your food is at **Slot #7**." They walk to the shelf, find slot 7, and grab their food. When the staff confirms pickup, that slot is freed up and recycled — so when order 51 comes in, it can go right back to slot 1. The 50 slots cycle forever.
 
 ### Anti-Fraud: Double Verification
+
+But here's the key question: how do we make sure the right person picks up the right food? Anyone could walk up and grab from slot 7. That's why we have **double verification**.
 
 When a student comes to pick up, they show their phone screen which displays:
 1. A **plate number** (which slot their food is at)
