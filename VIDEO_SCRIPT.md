@@ -82,7 +82,7 @@ My solution is two things working together:
 
 **Second — a timeout system.** If a student doesn't pick up their order within **15 minutes**, the system marks it as "Unclaimed," frees the slot, and moves the food to a separate unclaimed area. The student gets a notification saying: "Your order has timed out — please come to the counter directly." This prevents one forgotten order from blocking the whole system.
 
-**And one more thing** — the number of slots doesn't have to be fixed at 50. We can make it **dynamic based on traffic data**. During low-traffic hours like early morning, maybe we only need 20 slots. During the lunch rush, we scale up to 50. The system can **analyze historical ordering patterns** and automatically recommend the right number of slots for each time period. The cafeteria manager can also adjust it manually. This way, the counter space is always optimized — not too many empty slots wasting space, and not too few causing overflow.
+In practice, 50 slots is more than enough for most cafeterias. But the overflow queue and timeout system are there as a safety net — so the system **never gets stuck**, no matter how busy it gets.
 
 ### Wrap Up
 
