@@ -8,6 +8,7 @@ import ImpactPage from "./pages/ImpactPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
 import LoginPage from "./pages/LoginPage";
 import AboutPage from "./pages/AboutPage";
+import StaffSystemPage from "./pages/StaffSystemPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/kitchen" element={<KitchenDashboard />} />
           <Route path="/impact" element={<ImpactPage />} />
+          <Route path="/staff" element={<StaffSystemPage />} />
         </Routes>
       </main>
     </div>

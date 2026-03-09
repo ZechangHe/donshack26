@@ -74,7 +74,7 @@ router.get("/:id", (req, res) => {
 // Update order status (manual 2-step: pending → preparing → ready → picked-up)
 // Auto-assigns next plate number when marking ready
 router.patch("/:id/status", (req, res) => {
-  const { status } = req.body;
+  const { status, assignedStaff } = req.body;
   const validStatuses = ["pending", "preparing", "ready", "picked-up"];
   if (!validStatuses.includes(status)) {
     return res.status(400).json({ error: "Invalid status" });
@@ -84,6 +84,11 @@ router.patch("/:id/status", (req, res) => {
   if (!current) return res.status(404).json({ error: "Order not found" });
 
   const io = req.app.get("io");
+
+  // Assign staff when moving to preparing
+  if (status === "preparing" && assignedStaff != null) {
+    current.assignedStaff = assignedStaff;
+  }
 
   // Auto-assign plate number when marking as ready
   if (status === "ready" && !current.plateNumber) {

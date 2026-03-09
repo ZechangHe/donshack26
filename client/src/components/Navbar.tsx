@@ -23,6 +23,9 @@ export default function Navbar() {
         <Link to="/kitchen" className="kitchen-link">
           Kitchen
         </Link>
+        <Link to="/staff" className="kitchen-link">
+          Staff System
+        </Link>
         {user ? (
           <span className="navbar-user">
             Hi {user.name.split(" ")[0]} | <span className="navbar-balance">${user.balance.toFixed(2)}</span>
