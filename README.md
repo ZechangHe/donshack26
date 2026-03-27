@@ -2,7 +2,7 @@
 
 A paperless cafeteria ordering system that eliminates paper waste, cuts wait times, and prevents order theft — built for **DonsHack 2026**.
 
-**Team:** Zechang He & Gabriel Zubovsky
+**Team:** Zechang He (development) & Gabriel Zubovsky (product design & presentation)
 
 **Theme:** Enviromental Concerns
 
