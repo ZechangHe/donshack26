@@ -4,7 +4,7 @@ A paperless cafeteria ordering system that eliminates paper waste, cuts wait tim
 
 **Team:** Zechang He & Gabriel Zubovsky
 
-**Theme:** Environment
+**Theme:** Enviromental Concerns
 
 **Live Demo:** Deployed on [Render](https://render.com) with auto-deploy from GitHub
 
